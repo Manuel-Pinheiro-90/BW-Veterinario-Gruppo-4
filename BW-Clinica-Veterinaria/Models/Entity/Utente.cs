@@ -12,6 +12,6 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         [Required]
         public string Password { get; set; }
 
-        public List<Ruolo> Ruolos { get; set; } = [];
+        public List<Ruolo> Ruoli { get; set; } = [];
     }
 }

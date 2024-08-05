@@ -9,6 +9,6 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         public int IdRuolo { get; set; }
         [Required]
         public string Nome { get; set; }
-        public List<Utente> Utente { get; set; } = [];
+        public List<Utente> Utenti { get; set; } = [];
     }
 }
