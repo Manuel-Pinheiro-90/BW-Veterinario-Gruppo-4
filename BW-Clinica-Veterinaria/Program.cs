@@ -1,7 +1,17 @@
+using BW_Clinica_Veterinaria.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+var conn = builder.Configuration.GetConnectionString("CON")!;
+builder.Services
+    .AddDbContext<DataContext>(opt => opt.UseSqlServer(conn))
+    ;
 
 var app = builder.Build();
 
