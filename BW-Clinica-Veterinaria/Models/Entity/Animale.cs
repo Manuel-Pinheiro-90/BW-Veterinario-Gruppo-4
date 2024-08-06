@@ -12,7 +12,6 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         public string Tipologia { get; set; }
         [Required]
         public string Colore { get; set; }
-        [Required]
         [Column(TypeName = "varchar(15)")]
         public string MicroChipCodice { get; set; }
         [Required]
