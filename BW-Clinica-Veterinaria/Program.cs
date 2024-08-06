@@ -19,9 +19,9 @@ builder.Services
     .AddScoped<IAnimalService, AnimalService>()
     .AddScoped<IUtenteService, UtenteService>()
     .AddScoped<IProprietarioService, ProprietarioService>()
+    .AddScoped<IRicoveroService, RicoveroService>()
     .AddScoped<IProdottoService, ProdottoService>()
     ;
-    
 
 var conn = builder.Configuration.GetConnectionString("CON")!;
 builder.Services
@@ -36,9 +36,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 // Registrazione del servizio HTTP context accessor
 builder.Services.AddHttpContextAccessor();
-
-// Registrazione del servizio UtenteService
-builder.Services.AddScoped<IUtenteService, UtenteService>();
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 ﻿using BW_Clinica_Veterinaria.Context;
+using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
