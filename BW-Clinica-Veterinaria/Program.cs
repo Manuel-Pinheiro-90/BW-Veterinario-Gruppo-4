@@ -8,11 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IProprietarioService, ProprietarioService>();
 
 builder.Services
     .AddScoped<IAnimalService, AnimalService>()
-    .AddScoped<IUtenteService, UtenteService>();
+    .AddScoped<IUtenteService, UtenteService>()
+    .AddScoped<IProprietarioService, ProprietarioService>();
 
 var conn = builder.Configuration.GetConnectionString("CON")!;
 builder.Services
