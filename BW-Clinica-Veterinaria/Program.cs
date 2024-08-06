@@ -4,10 +4,16 @@ using BW_Clinica_Veterinaria.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using BW_Clinica_Veterinaria.Interface;
+using Microsoft.Extensions.Configuration;
 var builder = WebApplication.CreateBuilder(args);
+
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
 
 builder.Services
     .AddScoped<IAnimalService, AnimalService>()

@@ -1,0 +1,48 @@
+﻿@model BW_Clinica_Veterinaria.Models.Entity.Prodotto
+
+@{
+    ViewData["Title"] = "Dettagli Prodotto";
+}
+
+<h1>Dettagli Prodotto</h1>
+
+<div>
+    <h4>Prodotto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ditta.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ditta.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cassetto.NumeroArmadietto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cassetto.NumeroArmadietto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cassetto.NumeroCassetto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cassetto.NumeroCassetto)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdProdotto" class="btn btn-warning">Modifica</a>
+    <a asp-action="Index" class="btn btn-secondary">Indietro alla Lista</a>
+</div>
