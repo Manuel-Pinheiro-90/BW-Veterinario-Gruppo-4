@@ -66,31 +66,7 @@ namespace BW_Clinica_Veterinaria.Controllers
                 return NotFound();
             }
             return View(proprietario);
-
-
         }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodiceFiscale,Nome,Cognome,NumeroTelefono")] Proprietario proprietario)
-        {
-
-
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 

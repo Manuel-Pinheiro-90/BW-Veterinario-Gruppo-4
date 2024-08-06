@@ -9,11 +9,13 @@ namespace BW_Clinica_Veterinaria.Controllers
     {
         private readonly DataContext _ctx;
         private readonly IAnimalService _animalService;
+        private readonly IProprietarioService _proprietarioService;
 
-        public AnimalController(DataContext dbContext, IAnimalService animalService)
+        public AnimalController(DataContext dbContext, IAnimalService animalService, IProprietarioService proprietarioService)
         {
             _ctx = dbContext;
             _animalService = animalService;
+            _proprietarioService = proprietarioService;
         }
 
         public IActionResult Index()
@@ -21,8 +23,9 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View();
         }
 
-        public IActionResult AggiungiAnimale()
+        public async Task<IActionResult> AggiungiAnimale()
         {
+            ViewBag.Proprietari = await _proprietarioService.GetAll();
             return View();
         }
 
