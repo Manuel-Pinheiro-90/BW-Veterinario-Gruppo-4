@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
-    [Route("Proprietari")]
+   
     public class ProprietariController : Controller
     {
         private readonly IProprietarioService _proprietarioService;
