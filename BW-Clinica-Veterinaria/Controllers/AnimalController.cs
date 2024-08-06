@@ -71,5 +71,11 @@ namespace BW_Clinica_Veterinaria.Controllers
             await _ricoveroService.AggiungiRicovero(model);
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult RicoveriMensili()
+        {
+            var ricoveri = _ricoveroService.GetAll();
+            return View(ricoveri);
+        }
     }
 }
