@@ -15,7 +15,8 @@ namespace BW_Clinica_Veterinaria.Controllers
             _proprietarioService = proprietarioService;
         }
 
-        [HttpGet("")]
+
+
         public async Task<IActionResult> Index()
         {
             var proprietari = await _proprietarioService.GetAll();
@@ -46,7 +47,7 @@ namespace BW_Clinica_Veterinaria.Controllers
                 return NotFound();
             }
 
-            var proprietario = await _proprietarioService.GetByIdWithAnimals(id); 
+            var proprietario = await _proprietarioService.GetByIdWithAnimals(id);
             if (proprietario == null)
             {
                 return NotFound();
