@@ -17,7 +17,10 @@ builder.Services.AddControllersWithViews();
 
 builder.Services
     .AddScoped<IAnimalService, AnimalService>()
-    .AddScoped<IUtenteService, UtenteService>();
+    .AddScoped<IUtenteService, UtenteService>()
+    .AddScoped<IProprietarioService, ProprietarioService>()
+    .AddScoped<IProdottoService, ProdottoService>()
+    ;
     
 
 var conn = builder.Configuration.GetConnectionString("CON")!;

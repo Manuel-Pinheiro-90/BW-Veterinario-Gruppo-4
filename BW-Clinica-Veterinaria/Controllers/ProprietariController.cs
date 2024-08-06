@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
+    [Route("Proprietari")]
     public class ProprietariController : Controller
     {
         private readonly IProprietarioService _proprietarioService;
@@ -14,7 +15,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             _proprietarioService = proprietarioService;
         }
 
-
+        [HttpGet("")]
         public async Task<IActionResult> Index()
         {
             var proprietari = await _proprietarioService.GetAll();
