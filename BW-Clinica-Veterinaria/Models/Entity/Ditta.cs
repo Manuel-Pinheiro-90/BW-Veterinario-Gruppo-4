@@ -13,6 +13,5 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         public string Indirizzo { get; set; }
         [Required]
         public string Recapito { get; set; }
-       
     }
 }

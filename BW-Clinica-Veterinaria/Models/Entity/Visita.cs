@@ -17,8 +17,5 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         public string  CuraPrescritta { get; set; }
         [ForeignKey (nameof(IdAnimale))]
         public Animale Animale { get; set; }
-
-
-
     }
 }

@@ -10,7 +10,6 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         [Required]
         public int IdDitta { get; set; }
         [ForeignKey(nameof(IdDitta))]
-
         public Ditta Ditta { get; set; }
         [Required]
         public string Nome { get; set; }
@@ -20,10 +19,7 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         public int IdCassetto { get; set; }
         [ForeignKey(nameof(IdCassetto))]
         public Cassetto Cassetto { get; set; }
-       
         public List<Vendita> Vendite { get; set; } = [];
         public List<Utilizzo> Utilizzi { get; set; } = [];
-
-
     }
 }

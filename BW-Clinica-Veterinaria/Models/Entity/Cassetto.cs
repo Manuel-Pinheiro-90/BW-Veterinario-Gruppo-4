@@ -12,9 +12,5 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         [Required]
         public int NumeroArmadietto { get; set; }
         public List<Prodotto> Prodotti { get; set; } = [];
-
-
-
-
     }
 }
