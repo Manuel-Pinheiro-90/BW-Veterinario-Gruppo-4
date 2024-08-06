@@ -3,10 +3,10 @@ using BW_Clinica_Veterinaria.Models.Entity;
 
 namespace BW_Clinica_Veterinaria.Interface
 {
-    public interface IUserService
+    public interface IUtenteService
     {
         Task<Utente> Login(LoginDto loginDto);
-        Task<Utente> Register(RegisterDto registerDto);
+        Task<bool> Register(RegisterDto registerDto);
         Task Logout();
     }
 }
