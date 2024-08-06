@@ -15,6 +15,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
 
+        
         public async Task<IActionResult> Index()
         {
             var proprietari = await _proprietarioService.GetAll();
@@ -131,7 +132,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
 
-        [HttpPost, ActionName("Delete")]
+       [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {

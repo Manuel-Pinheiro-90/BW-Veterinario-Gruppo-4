@@ -15,14 +15,14 @@ namespace BW_Clinica_Veterinaria.Controllers
             _prodottoService = prodottoService;
         }
 
-        [HttpGet]
+       
         public async Task<ActionResult<IEnumerable<Prodotto>>> GetProdotti()
         {
             var prodotti = await _prodottoService.GetAllProdottiAsync();
             return Ok(prodotti);
         }
 
-        [HttpGet("{id}")]
+      
         public async Task<ActionResult<Prodotto>> GetProdotto(int id)
         {
             var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
@@ -40,7 +40,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             return CreatedAtAction(nameof(GetProdotto), new { id = newProdotto.IdProdotto }, newProdotto);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> PutProdotto(int id, Prodotto prodotto)
         {
             if (id != prodotto.IdProdotto)
@@ -67,7 +67,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             return NoContent();
         }
 
-        [HttpGet]
+       // [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -86,7 +86,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<IActionResult> DeleteProdotto(int id)
         {
             var deleted = await _prodottoService.DeleteProdottoAsync(id);
