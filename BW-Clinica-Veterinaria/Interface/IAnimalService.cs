@@ -7,5 +7,6 @@ namespace BW_Clinica_Veterinaria.Interface
         public Task<Animale> AggiungiAnimale(Animale animale);
         public Task<IEnumerable<Animale>> GetAll();
         public Task<Animale> GetByMicroChip(string microchip);
+
     }
 }
