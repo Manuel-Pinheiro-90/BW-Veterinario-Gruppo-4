@@ -57,7 +57,12 @@ namespace BW_Clinica_Veterinaria.Service
         }
 
 
-
+        public async Task<Proprietario> GetByIdWithAnimals(string codiceFiscale)
+        {
+            return await _ctx.Proprietari
+                .Include(p => p.Animali)
+                .FirstOrDefaultAsync(p => p.CodiceFiscale == codiceFiscale);
+        }
 
 
 

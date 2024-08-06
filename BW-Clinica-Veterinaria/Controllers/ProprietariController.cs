@@ -21,20 +21,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View(proprietari);
         }
 
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var proprietario = await _proprietarioService.GetById(id);
-            if (proprietario == null)
-            {
-                return NotFound();
-            }
-            return View(proprietario);
-        }
+   
 
 
         public IActionResult Create()
@@ -52,6 +39,23 @@ namespace BW_Clinica_Veterinaria.Controllers
                 await _proprietarioService.Create(proprietario);
                 return RedirectToAction(nameof(Index));
             }
+            return View(proprietario);
+        }
+
+
+        public async Task<IActionResult> Details(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var proprietario = await _proprietarioService.GetByIdWithAnimals(id); 
+            if (proprietario == null)
+            {
+                return NotFound();
+            }
+
             return View(proprietario);
         }
 
