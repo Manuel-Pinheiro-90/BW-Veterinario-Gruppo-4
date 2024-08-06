@@ -9,7 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Configurazione della connessione al database
+builder.Services
+    .AddScoped<IAnimalService, AnimalService>()
+    ;
+
 var conn = builder.Configuration.GetConnectionString("CON")!;
 builder.Services
     .AddDbContext<DataContext>(opt => opt.UseSqlServer(conn));
