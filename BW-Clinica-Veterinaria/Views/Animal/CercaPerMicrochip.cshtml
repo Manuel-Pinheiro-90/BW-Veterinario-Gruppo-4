@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Cerca Animale per Microchip";
+}
+
+<h2>Cerca Animale per Microchip</h2>
+
+<form id="searchForm">
+    <div class="form-group">
+        <label for="microchip">Codice Microchip</label>
+        <input type="text" class="form-control" id="microchip" name="microchip" />
+    </div>
+    <button type="submit" class="btn btn-primary" id="searchButton">Cerca</button>
+</form>
+
+<div id="result"></div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#searchForm").submit(function (e) {
+                e.preventDefault();
+                var microchip = $("#microchip").val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CercaPerMicrochip", "Animal")',
+                    data: { microchip: microchip },
+                    success: function (response) {
+                        if (response.success) {
+                            var animalDetails = "<dl class='row'>" +
+                                "<dt class='col-sm-2'>Nome</dt><dd class='col-sm-10'>" + response.data.name + "</dd>" +
+                                "<dt class='col-sm-2'>Tipologia</dt><dd class='col-sm-10'>" + response.data.tipologia + "</dd>" +
+                                "<dt class='col-sm-2'>Colore</dt><dd class='col-sm-10'>" + response.data.colore + "</dd>" +
+                                "<dt class='col-sm-2'>Microchip</dt><dd class='col-sm-10'>" + response.data.microChipCodice + "</dd>" +
+                                "<dt class='col-sm-2'>Data di Nascita</dt><dd class='col-sm-10'>" + new Date(response.data.dataNascita).toLocaleDateString() + "</dd>" +
+                                "<dt class='col-sm-2'>Proprietario</dt><dd class='col-sm-10'>" + (response.data.proprietario ? response.data.proprietario.nome : 'N/A') + "</dd>" +
+                                "</dl>";
+                            $("#result").html(animalDetails);
+                        } else {
+                            $("#result").html("<p class='text-danger'>" + response.message + "</p>");
+                        }
+                    },
+                    error: function () {
+                        $("#result").html("<p class='text-danger'>Si è verificato un errore durante la ricerca.</p>");
+                    }
+                });
+            });
+        });
+    </script>
+}
