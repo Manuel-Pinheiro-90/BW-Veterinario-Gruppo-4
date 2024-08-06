@@ -11,7 +11,7 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         [Required]
         public string Cognome{ get; set; }
         [Required]
-        public int NumeroTelefono { get; set; }
+        public string NumeroTelefono { get; set; }
         public List<Animale> Animali { get; set; } = [];
     }
 }

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BW_Clinica_Veterinaria.Models.Entity.Proprietario>
+
+<h1>Lista Proprietari</h1>
+
+<p>
+    <a asp-action="Create">Crea Nuovo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodiceFiscale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cognome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroTelefono)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodiceFiscale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cognome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroTelefono)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CodiceFiscale">Modifica</a> |
+                    <a asp-action="Details" asp-route-id="@item.CodiceFiscale">Dettagli</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CodiceFiscale">Elimina</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

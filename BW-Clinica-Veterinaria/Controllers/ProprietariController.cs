@@ -1,6 +1,7 @@
 ﻿using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
@@ -35,23 +36,26 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View(proprietario);
         }
 
-
-
+        
         public IActionResult Create()
         {
             return View();
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task <IActionResult> Create([Bind("CodiceFiscale,Nome,Cognome,NumeroTelefono")] Proprietario proprietario)
+        public async Task<IActionResult> Create([Bind("CodiceFiscale,Nome,Cognome,NumeroTelefono")] Proprietario proprietario)
         {
-            await _proprietarioService.Create(proprietario);
-            return RedirectToAction("Index");
-
-
-
+            if (ModelState.IsValid)
+            {
+                await _proprietarioService.Create(proprietario);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(proprietario);
         }
+
+
 
         public async Task<IActionResult> Edit (string id)
         {
@@ -71,14 +75,63 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("CodiceFiscale,Nome,Cognome,NumeroTelefono")] Proprietario proprietario)
         {
+            if (id != proprietario.CodiceFiscale) 
+            {
+                return NotFound();
 
 
+            }
+
+            try
+            {
+                await _proprietarioService.Update(proprietario);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (await _proprietarioService.GetById(proprietario.CodiceFiscale) == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
 
         }
+
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var proprietario = await _proprietarioService.GetById(id);
+            if (proprietario == null)
+            {
+                return NotFound();
+            }
+
+            return View(proprietario);
+        }
+
+       
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            await _proprietarioService.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
+
 
 
 
