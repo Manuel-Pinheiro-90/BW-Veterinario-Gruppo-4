@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BW_Clinica_Veterinaria.Models.Entity.Prodotto>
+
+@{
+    ViewData["Title"] = "Prodotti";
+}
+
+<h1>Prodotti</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crea Nuovo Prodotto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ditta.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cassetto.NumeroArmadietto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cassetto.NumeroCassetto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ditta.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cassetto.Nome)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdProdotto" class="btn btn-warning">Modifica</a>
+                    <a asp-action="Details" asp-route-id="@item.IdProdotto" class="btn btn-info">Dettagli</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdProdotto" class="btn btn-danger">Elimina</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

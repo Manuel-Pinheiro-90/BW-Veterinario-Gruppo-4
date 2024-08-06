@@ -1,0 +1,43 @@
+﻿@model BW_Clinica_Veterinaria.Models.Entity.Prodotto
+
+@{
+    ViewData["Title"] = "Crea Nuovo Prodotto";
+}
+
+<h1>Crea Nuovo Prodotto</h1>
+
+<h4>Prodotto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <input asp-for="Tipo" class="form-control" />
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdDitta" class="control-label"></label>
+                <input asp-for="IdDitta" class="form-control" />
+                <span asp-validation-for="IdDitta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCassetto" class="control-label"></label>
+                <input asp-for="IdCassetto" class="form-control" />
+                <span asp-validation-for="IdCassetto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crea" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Indietro alla Lista</a>
+</div>
