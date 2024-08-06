@@ -3,6 +3,48 @@
 
 @{
     ViewData["Title"] = "RicoveriMensili";
-    List<Ricovero> ricoveriAttivi = Model;
+    List<Ricovero> ricoveriAttivi = new List<Ricovero>();
+    var currentMonth = DateTime.Now.Month;
+    var currentYear = DateTime.Now.Year;
+
+    foreach (var r in Model)
+    {
+        if (r.DataFineRicovero == null)
+        {
+            ricoveriAttivi.Add(r);
+        }
+    }
 }
 
+
+<h6>Ricoveri attivi</h6>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id Ricovero</th>
+            <th>Data di ricovero</th>
+            <th>Data di fine ricovero</th>
+            <th>Foto</th>
+            <th>Nome</th>
+            <th>Specie</th>
+            <th>Colore</th>
+            <th>Codice microchip</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in ricoveriAttivi)
+        {
+            <tr>
+                <th>@r.IdRicovero</th>
+                <th>@r.DataRicovero</th>
+                <th>@(r.DataFineRicovero.HasValue ? r.DataFineRicovero.Value.ToString("dd/MM/yyyy") : "Ricovero Attivo")</th>
+                <th><img src="@r.Foto" alt="img ricovero" class="img-ricovero" /></th>
+                <th>@r.Animale.Name</th>
+                <th>@r.Animale.Tipologia</th>
+                <th>@r.Animale.Colore</th>
+                <th>@r.Animale.MicroChipCodice</th>
+            </tr>
+        }
+    </tbody>
+</table>
