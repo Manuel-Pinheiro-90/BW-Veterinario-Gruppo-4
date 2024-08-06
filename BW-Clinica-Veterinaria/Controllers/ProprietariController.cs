@@ -36,13 +36,13 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View(proprietario);
         }
 
-        
+
         public IActionResult Create()
         {
             return View();
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CodiceFiscale,Nome,Cognome,NumeroTelefono")] Proprietario proprietario)
@@ -57,7 +57,7 @@ namespace BW_Clinica_Veterinaria.Controllers
 
 
 
-        public async Task<IActionResult> Edit (string id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -70,8 +70,6 @@ namespace BW_Clinica_Veterinaria.Controllers
                 return NotFound();
             }
             return View(proprietario);
-
-
         }
 
 
@@ -80,7 +78,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("CodiceFiscale,Nome,Cognome,NumeroTelefono")] Proprietario proprietario)
         {
-            if (id != proprietario.CodiceFiscale) 
+            if (id != proprietario.CodiceFiscale)
             {
                 return NotFound();
 
@@ -123,7 +121,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View(proprietario);
         }
 
-       
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
