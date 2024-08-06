@@ -1,5 +1,5 @@
 ﻿using BW_Clinica_Veterinaria.Models.Entity;
-namespace BW_Clinica_Veterinaria.Service
+namespace BW_Clinica_Veterinaria.Interface
 {
     public interface IProprietarioService
     {
