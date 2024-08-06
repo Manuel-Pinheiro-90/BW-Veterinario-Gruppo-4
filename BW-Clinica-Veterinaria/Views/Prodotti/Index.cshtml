@@ -44,7 +44,10 @@
                     @Html.DisplayFor(modelItem => item.Ditta.Nome)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Cassetto.Nome)
+                    @Html.DisplayFor(modelItem => item.Cassetto.NumeroArmadietto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cassetto.NumeroCassetto)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdProdotto" class="btn btn-warning">Modifica</a>
