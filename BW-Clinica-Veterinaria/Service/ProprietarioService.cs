@@ -34,12 +34,18 @@ namespace BW_Clinica_Veterinaria.Service
 
 
 
-        public async Task Create (Proprietario proprietario)
+        public async Task Create(Proprietario proprietario)
         {
-            _ctx.Entry(proprietario).State = EntityState.Modified;
-            await _ctx.SaveChangesAsync();  
-
-
+            var existingProprietario = await _ctx.Proprietari.FindAsync(proprietario.CodiceFiscale);
+            if (existingProprietario == null)
+            {
+                _ctx.Proprietari.Add(proprietario);
+            }
+            else
+            {
+                _ctx.Entry(proprietario).State = EntityState.Modified;
+            }
+            await _ctx.SaveChangesAsync();
         }
 
 
@@ -51,17 +57,26 @@ namespace BW_Clinica_Veterinaria.Service
         }
 
 
-
-
-
-
-        public async Task Delete (string codiceFiscale)
+        public async Task<Proprietario> GetByIdWithAnimals(string codiceFiscale)
         {
-            var proprietario = await _ctx.Proprietari.FindAsync(codiceFiscale);
-            await _ctx.SaveChangesAsync();
+            return await _ctx.Proprietari
+                .Include(p => p.Animali)
+                .FirstOrDefaultAsync(p => p.CodiceFiscale == codiceFiscale);
         }
 
 
+
+
+
+        public async Task Delete(string codiceFiscale)
+        {
+            var proprietario = await _ctx.Proprietari.FindAsync(codiceFiscale);
+            if (proprietario != null)
+            {
+                _ctx.Proprietari.Remove(proprietario); 
+                await _ctx.SaveChangesAsync();
+            }
+        }
 
 
 

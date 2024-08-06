@@ -32,5 +32,7 @@ namespace BW_Clinica_Veterinaria.Service
             var animale = await _ctx.Animali.SingleOrDefaultAsync(a => a.MicroChipCodice == microchip);
             return animale;
         }
+
+
     }
 }
