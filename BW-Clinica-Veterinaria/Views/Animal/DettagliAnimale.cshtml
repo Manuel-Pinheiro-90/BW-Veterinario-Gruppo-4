@@ -1,0 +1,29 @@
+﻿@model BW_Clinica_Veterinaria.Models.Entity.Animale
+
+@{
+    ViewData["Title"] = "Dettagli Animale";
+}
+
+<h2>Dettagli Animale</h2>
+
+<div>
+    <h4>Animale</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Nome</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        <dt class="col-sm-2">Tipologia</dt>
+        <dd class="col-sm-10">@Model.Tipologia</dd>
+        <dt class="col-sm-2">Colore</dt>
+        <dd class="col-sm-10">@Model.Colore</dd>
+        <dt class="col-sm-2">Microchip</dt>
+        <dd class="col-sm-10">@Model.MicroChipCodice</dd>
+        <dt class="col-sm-2">Data di Nascita</dt>
+        <dd class="col-sm-10">@Model.DataNascita.ToString("dd/MM/yyyy")</dd>
+        <dt class="col-sm-2">Proprietario</dt>
+        <dd class="col-sm-10">@Model.Proprietario?.Nome ?? "N/A"</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Torna alla Lista</a>
+</div>
