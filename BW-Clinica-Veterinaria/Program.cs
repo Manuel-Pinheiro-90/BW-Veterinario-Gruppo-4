@@ -1,4 +1,5 @@
 using BW_Clinica_Veterinaria.Context;
+using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Service;
 using Microsoft.EntityFrameworkCore;
 using BW_Clinica_Veterinaria.Interface;
@@ -7,7 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped< IProprietarioService, ProprietarioService>();
+builder.Services.AddScoped<IProprietarioService, ProprietarioService>();
+
+builder.Services
+    .AddScoped<IAnimalService, AnimalService>()
+    ;
 
 var conn = builder.Configuration.GetConnectionString("CON")!;
 builder.Services
