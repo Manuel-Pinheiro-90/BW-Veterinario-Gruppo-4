@@ -1,10 +1,11 @@
 ﻿using BW_Clinica_Veterinaria.Context;
+using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BW_Clinica_Veterinaria.Service
 {
-    public class ProdottoService
+    public class ProdottoService : IProdottoService
     {
         private readonly DataContext _context;
 
