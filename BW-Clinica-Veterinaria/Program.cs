@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services
     .AddScoped<IAnimalService, AnimalService>()
-    ;
+    .AddScoped<IUtenteService, UtenteService>();
 
 var conn = builder.Configuration.GetConnectionString("CON")!;
 builder.Services
