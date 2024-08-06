@@ -20,6 +20,7 @@ builder.Services
     .AddScoped<IUtenteService, UtenteService>()
     .AddScoped<IProprietarioService, ProprietarioService>()
     .AddScoped<IRicoveroService, RicoveroService>()
+    .AddScoped<IProdottoService, ProdottoService>()
     ;
 
 var conn = builder.Configuration.GetConnectionString("CON")!;
