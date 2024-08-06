@@ -61,13 +61,17 @@ namespace BW_Clinica_Veterinaria.Service
 
 
 
-        public async Task Delete (string codiceFiscale)
+
+
+        public async Task Delete(string codiceFiscale)
         {
             var proprietario = await _ctx.Proprietari.FindAsync(codiceFiscale);
-            await _ctx.SaveChangesAsync();
+            if (proprietario != null)
+            {
+                _ctx.Proprietari.Remove(proprietario); 
+                await _ctx.SaveChangesAsync();
+            }
         }
-
-
 
 
 

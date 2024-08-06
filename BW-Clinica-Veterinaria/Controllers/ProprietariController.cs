@@ -86,23 +86,28 @@ namespace BW_Clinica_Veterinaria.Controllers
 
 
             }
+            if (ModelState.IsValid)
+            {
 
-            try
-            {
-                await _proprietarioService.Update(proprietario);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (await _proprietarioService.GetById(proprietario.CodiceFiscale) == null)
+                try
                 {
-                    return NotFound();
+                    await _proprietarioService.Update(proprietario);
+                    return RedirectToAction(nameof(Index));
                 }
-                else
+
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (await _proprietarioService.GetById(proprietario.CodiceFiscale) == null)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-            return RedirectToAction(nameof(Index));
+            return View(proprietario);
 
         }
 
