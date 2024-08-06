@@ -13,12 +13,8 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         [Column(TypeName = "nvarchar(max)")]
         public string Foto { get; set; }
         [Required]
-       
         public int IdAnimale { get; set; }
         [ForeignKey(nameof(IdAnimale))]
         public Animale Animale {  get; set; }
-
-
-
     }
 }

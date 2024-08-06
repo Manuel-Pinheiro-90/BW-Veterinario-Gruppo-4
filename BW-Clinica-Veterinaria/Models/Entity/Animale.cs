@@ -7,7 +7,6 @@ namespace BW_Clinica_Veterinaria.Models.Entity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdAnimale {  get; set; }
-       
         public string Name { get; set; }
         [Required]
         public string Tipologia { get; set; }
@@ -20,12 +19,8 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         public DateTime DataNascita { get; set; } 
         [Required]
          public DateTime DataRegistrazione { get; set; } = DateTime.Now;
-       
-
         public string CodiceFiscaleProprietario { get; set; }
         [ForeignKey(nameof(CodiceFiscaleProprietario))]
         public Proprietario Proprietario { get; set; }
-
-
     }
 }
