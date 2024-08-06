@@ -1,10 +1,15 @@
 ﻿@model IEnumerable<BW_Clinica_Veterinaria.Models.Entity.Proprietario>
 
+@{
+    ViewData["Title"] = "Lista Proprietari";
+}
+
 <h1>Lista Proprietari</h1>
 
 <p>
-    <a asp-action="Create">Crea Nuovo</a>
+    <a asp-action="Create" class="btn btn-primary">Crea Nuovo</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -40,9 +45,9 @@
                     @Html.DisplayFor(modelItem => item.NumeroTelefono)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.CodiceFiscale">Modifica</a> |
-                    <a asp-action="Details" asp-route-id="@item.CodiceFiscale">Dettagli</a> |
-                    <a asp-action="Delete" asp-route-id="@item.CodiceFiscale">Elimina</a>
+                    <a asp-action="Edit" asp-route-id="@item.CodiceFiscale" class="btn btn-secondary">Modifica</a>
+                    <a asp-action="Details" asp-route-id="@item.CodiceFiscale" class="btn btn-info">Dettagli</a>
+                    <a asp-action="Delete" asp-route-id="@item.CodiceFiscale" class="btn btn-danger">Elimina</a>
                 </td>
             </tr>
         }

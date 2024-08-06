@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
+    [Route("Proprietari")]
     public class ProprietariController : Controller
     {
         private readonly IProprietarioService _proprietarioService;
@@ -15,14 +16,14 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
 
-        
+
         public async Task<IActionResult> Index()
         {
             var proprietari = await _proprietarioService.GetAll();
             return View(proprietari);
         }
 
-   
+
 
 
         public IActionResult Create()
@@ -51,7 +52,7 @@ namespace BW_Clinica_Veterinaria.Controllers
                 return NotFound();
             }
 
-            var proprietario = await _proprietarioService.GetByIdWithAnimals(id); 
+            var proprietario = await _proprietarioService.GetByIdWithAnimals(id);
             if (proprietario == null)
             {
                 return NotFound();
@@ -132,7 +133,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
 
-       [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
