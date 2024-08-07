@@ -1,0 +1,49 @@
+﻿@model BW_Clinica_Veterinaria.Models.Entity.Vendita
+
+@{
+    ViewData["Title"] = "Crea Vendita";
+}
+
+<h1>Crea Vendita</h1>
+
+<h4>Vendita</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="CodiceFiscaleCliente" class="control-label"></label>
+                <select asp-for="CodiceFiscaleCliente" class="form-control" asp-items="@(new SelectList(ViewBag.Proprietari, "CodiceFiscale", "CodiceFiscale"))"></select>
+                <span asp-validation-for="CodiceFiscaleCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProdotto" class="control-label"></label>
+                <select asp-for="IdProdotto" class="form-control" asp-items="@(new SelectList(ViewBag.Prodotti, "IdProdotto", "Nome"))"></select>
+                <span asp-validation-for="IdProdotto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ricetta" class="control-label"></label>
+                <input asp-for="Ricetta" class="form-control" />
+                <span asp-validation-for="Ricetta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crea" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Torna alla lista</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
