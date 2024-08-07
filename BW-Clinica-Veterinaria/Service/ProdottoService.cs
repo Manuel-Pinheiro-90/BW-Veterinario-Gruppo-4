@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using BW_Clinica_Veterinaria.Interface;
 using Microsoft.AspNetCore.Mvc;
+using BW_Clinica_Veterinaria.Dto;
 
 namespace BW_Clinica_Veterinaria.Service
 {
@@ -36,14 +37,25 @@ namespace BW_Clinica_Veterinaria.Service
         }
 
 
-        public async Task<Prodotto> AddProdottoAsync(Prodotto prodotto, Utilizzo utilizzo)
+        public async Task<Prodotto> AddProdottoAsync(ProdottoDto model, List<int> utilizziId)
         {
-            _context.Prodotti.Add(prodotto);
+            var utilizzi = await _context.Utilizzi
+                   .Where(u => utilizziId.Contains(u.IdUtilizzo))
+                   .ToListAsync();
+
+            var prodottoFinale = new Prodotto
+            {
+                IdDitta = model.IdDitta,
+                IdCassetto = model.IdCassetto,
+                Nome = model.Nome,
+                Tipo = model.Tipo,
+                Utilizzi = utilizzi
+            };
+
+            _context.Prodotti.Add(prodottoFinale);
             await _context.SaveChangesAsync();
-            return prodotto;
+            return prodottoFinale;
         }
-
-
 
         public async Task<Prodotto> UpdateProdottoAsync(Prodotto prodotto)
         {

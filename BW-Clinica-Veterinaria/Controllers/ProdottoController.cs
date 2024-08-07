@@ -1,4 +1,5 @@
-﻿using BW_Clinica_Veterinaria.Interface;
+﻿using BW_Clinica_Veterinaria.Dto;
+using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
 using BW_Clinica_Veterinaria.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -39,14 +40,14 @@ namespace BW_Clinica_Veterinaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Prodotto prodotto, List<Utilizzo>utilizzi)
+        public async Task<IActionResult> Create(ProdottoDto model, List<int> utilizziId)
         {
             if (ModelState.IsValid)
             {
-                await _prodottoService.AddProdottoAsync(prodotto,utilizzi);
+                await _prodottoService.AddProdottoAsync(model, utilizziId);
                 return RedirectToAction(nameof(Index));
             }
-            return View(prodotto);
+            return View(model);
         }
 
 
