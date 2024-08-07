@@ -19,8 +19,9 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View();
         }
 
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
+            ViewBag.Ruoli = await _utenteService.GetRuoli();
             return View();
         }
 

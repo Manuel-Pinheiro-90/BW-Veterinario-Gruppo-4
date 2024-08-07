@@ -1,7 +1,9 @@
-﻿@model BW_Clinica_Veterinaria.Dto.RegisterDto
+﻿@using BW_Clinica_Veterinaria.Models.Entity
+@model BW_Clinica_Veterinaria.Dto.RegisterDto
 
 @{
     ViewData["Title"] = "Register";
+    List<Ruolo> ruoli = ViewBag.Ruoli;
 }
 
 <h2>Register</h2>
@@ -20,7 +22,12 @@
     </div>
     <div class="form-group">
         <label asp-for="Ruolo" class="control-label"></label>
-        <input asp-for="Ruolo" class="form-control" />
+        <select asp-for="Ruolo" class="form-select input-FPA">
+            @foreach (var r in ruoli)
+            {
+                <option value="@r.Nome">@r.Nome</option>
+            }
+        </select>
         <span asp-validation-for="Ruolo" class="text-danger"></span>
     </div>
     <div class="form-group">

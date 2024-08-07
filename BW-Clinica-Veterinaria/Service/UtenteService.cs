@@ -75,5 +75,11 @@ namespace BW_Clinica_Veterinaria.Service
             await _httpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
+        public async Task<List<Ruolo>> GetRuoli()
+        {
+            var list = await _ctx.Ruoli.ToListAsync();
+            return list;
+        }
+
     }
 }

@@ -36,8 +36,8 @@ builder.Services
     .AddAuthorization(opt =>
     {
         opt.AddPolicy(Policies.LoggedIn, cfg => cfg.RequireAuthenticatedUser());
-        opt.AddPolicy(Policies.IsVet, cfg => cfg.RequireRole("Vet"));
-        opt.AddPolicy(Policies.IsPharmacist, cfg => cfg.RequireRole("Pharmacist"));
+        opt.AddPolicy(Policies.IsVet, cfg => cfg.RequireRole("Veterinario"));
+        opt.AddPolicy(Policies.IsPharmacist, cfg => cfg.RequireRole("Farmacista"));
     });
 
 // Registrazione del servizio HTTP context accessor
