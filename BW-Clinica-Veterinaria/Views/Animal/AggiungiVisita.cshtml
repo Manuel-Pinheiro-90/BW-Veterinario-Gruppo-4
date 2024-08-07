@@ -1,0 +1,40 @@
+﻿@model BW_Clinica_Veterinaria.Models.Entity.Visita
+
+@{
+    ViewData["Title"] = "Aggiungi Visita";
+}
+
+<h2>Aggiungi Visita</h2>
+
+<form asp-action="AggiungiVisita" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label asp-for="Data" class="control-label"></label>
+        <input asp-for="Data" class="form-control" type="datetime-local" />
+        <span asp-validation-for="Data" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Esame" class="control-label"></label>
+        <input asp-for="Esame" class="form-control" />
+        <span asp-validation-for="Esame" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CuraPrescritta" class="control-label"></label>
+        <input asp-for="CuraPrescritta" class="form-control" />
+        <span asp-validation-for="CuraPrescritta" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="IdAnimale" />
+    <div class="form-group">
+        <input type="submit" value="Aggiungi" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Details" asp-route-id="@Model.IdAnimale">Torna alla Lista Visite</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

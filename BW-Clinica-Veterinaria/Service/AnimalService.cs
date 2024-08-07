@@ -34,5 +34,32 @@ namespace BW_Clinica_Veterinaria.Service
         }
 
 
+        ////////////////////////////////////////////////////////////
+        public async Task<Animale> GetById(int id)
+        {
+            return await _ctx.Animali.SingleOrDefaultAsync(a => a.IdAnimale == id);
+        }
+
+        public async Task<IEnumerable<Visita>> GetVisiteByAnimaleId(int idAnimale)
+        {
+            return await _ctx.Visite.Where(v => v.IdAnimale == idAnimale).OrderByDescending(v => v.Data).ToListAsync();
+        }
+
+        public async Task<Visita> AggiungiVisita(Visita visita)
+        {
+            _ctx.Visite.Add(visita);
+            await _ctx.SaveChangesAsync();
+            return visita;
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }
