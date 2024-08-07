@@ -1,3 +1,4 @@
+using BW_Clinica_Veterinaria;
 using BW_Clinica_Veterinaria.Context;
 using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Service;
@@ -17,6 +18,7 @@ builder.Services
     .AddScoped<IRicoveroService, RicoveroService>()
     .AddScoped<IProdottoService, ProdottoService>()
     .AddScoped<IVenditaService, VenditaService>()
+    .AddScoped<IPasswordEncoder, PasswordEncoder>()
     ;
 
 var conn = builder.Configuration.GetConnectionString("CON")!;
@@ -28,6 +30,14 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = "/Utente/Login";
+    });
+
+builder.Services
+    .AddAuthorization(opt =>
+    {
+        opt.AddPolicy(Policies.LoggedIn, cfg => cfg.RequireAuthenticatedUser());
+        opt.AddPolicy(Policies.IsVet, cfg => cfg.RequireRole("Veterinario"));
+        opt.AddPolicy(Policies.IsPharmacist, cfg => cfg.RequireRole("Farmacista"));
     });
 
 // Registrazione del servizio HTTP context accessor
