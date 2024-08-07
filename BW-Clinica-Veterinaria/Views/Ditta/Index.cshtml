@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BW_Clinica_Veterinaria.Models.Entity.Ditta>
+
+@{
+    ViewData["Title"] = "Ditte";
+}
+
+<h1>Ditte</h1>
+
+<p>
+    <a asp-action="Create">Aggiungi una nuova ditta</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recapito)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recapito)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDitta">Modifica</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDitta">Dettagli</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDitta">Elimina</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

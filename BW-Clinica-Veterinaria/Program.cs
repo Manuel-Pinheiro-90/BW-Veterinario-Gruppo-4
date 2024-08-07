@@ -17,6 +17,7 @@ builder.Services
     .AddScoped<IRicoveroService, RicoveroService>()
     .AddScoped<IProdottoService, ProdottoService>()
     .AddScoped<IVenditaService, VenditaService>()
+    .AddScoped<IDittaService, DittaService>()
     ;
 
 var conn = builder.Configuration.GetConnectionString("CON")!;
