@@ -9,6 +9,7 @@ namespace BW_Clinica_Veterinaria.Models.Entity
         public int IdRicovero { get; set; }
         [Required]
         public DateTime DataRicovero { get; set; }
+        public DateTime? DataFineRicovero { get; set; }
         [Required]
         [Column(TypeName = "nvarchar(max)")]
         public string Foto { get; set; }

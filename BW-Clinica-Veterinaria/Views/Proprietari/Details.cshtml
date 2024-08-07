@@ -76,6 +76,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DataNascita)
                 </td>
+                <td>
+                    <a asp-action="Details" asp-controller="Animal" asp-route-id="@item.IdAnimale" class="btn btn-info">Dettagli</a>
+                    <a asp-action="Visite" asp-controller="Animal" asp-route-id="@item.IdAnimale" class="btn btn-secondary">Cronistoria Visite</a>
+
+                </td>
+
+
+
+
             </tr>
         }
     </tbody>

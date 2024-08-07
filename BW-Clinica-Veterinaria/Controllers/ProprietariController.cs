@@ -23,14 +23,10 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View(proprietari);
         }
 
-
-
-
         public IActionResult Create()
         {
             return View();
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -43,7 +39,6 @@ namespace BW_Clinica_Veterinaria.Controllers
             }
             return View(proprietario);
         }
-
 
         public async Task<IActionResult> Details(string id)
         {
@@ -61,8 +56,6 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View(proprietario);
         }
 
-
-
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -77,8 +70,6 @@ namespace BW_Clinica_Veterinaria.Controllers
             }
             return View(proprietario);
         }
-
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -115,7 +106,6 @@ namespace BW_Clinica_Veterinaria.Controllers
 
         }
 
-
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -132,7 +122,6 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View(proprietario);
         }
 
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
@@ -140,20 +129,5 @@ namespace BW_Clinica_Veterinaria.Controllers
             await _proprietarioService.Delete(id);
             return RedirectToAction(nameof(Index));
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
 }
