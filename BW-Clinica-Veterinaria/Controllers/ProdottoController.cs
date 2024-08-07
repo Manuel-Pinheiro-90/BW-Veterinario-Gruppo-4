@@ -39,15 +39,19 @@ namespace BW_Clinica_Veterinaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Prodotto prodotto)
+        public async Task<IActionResult> Create(Prodotto prodotto, List<Utilizzo>utilizzi)
         {
             if (ModelState.IsValid)
             {
-                await _prodottoService.AddProdottoAsync(prodotto);
+                await _prodottoService.AddProdottoAsync(prodotto,utilizzi);
                 return RedirectToAction(nameof(Index));
             }
             return View(prodotto);
         }
+
+
+      
+
         public async Task<IActionResult> Edit(int id)
         {
             var prodotto = await _prodottoService.GetProdottoByIdAsync(id);

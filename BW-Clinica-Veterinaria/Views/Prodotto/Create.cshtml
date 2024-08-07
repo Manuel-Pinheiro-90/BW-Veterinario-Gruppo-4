@@ -1,8 +1,10 @@
-﻿@model BW_Clinica_Veterinaria.Models.Entity.Prodotto
+﻿@using BW_Clinica_Veterinaria.Models.Entity
+@model BW_Clinica_Veterinaria.Models.Entity.Prodotto
 
 
 @{
     ViewData["Title"] = "Crea Nuovo Prodotto";
+    List<Utilizzo> utilizzi = ViewBag.Utilizzi;
 }
 
 <h1>Crea Nuovo Prodotto</h1>
@@ -35,19 +37,20 @@
             <div class="form-group">
                 <input type="submit" value="Crea" class="btn btn-primary" />
             </div>
-        </form>
+        
         <div class="form-group container-fluid">
             <div class="row">
-                @foreach (var utilizzi in Model.Utilizzi)
+                @foreach (var utilizzo in utilizzi)
                 {
                     <div class="form-check col-6">
-                        <input class="form-check-input" type="checkbox" name="utilizzi" value="@utilizzi.Descrizione" />
-                        <label class="form-check-label">@utilizzi.Descrizione</label>
+                        <input class="form-check-input" type="checkbox" name="Utilizzi" value="@utilizzo.IdUtilizzo" />
+                        <label class="form-check-label">@utilizzo.Descrizione</label>
                     </div>
                 }
             </div>
 
         </div>
+        </form>
     </div>
 </div>
 

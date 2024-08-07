@@ -36,7 +36,7 @@ namespace BW_Clinica_Veterinaria.Service
         }
 
 
-        public async Task<Prodotto> AddProdottoAsync(Prodotto prodotto)
+        public async Task<Prodotto> AddProdottoAsync(Prodotto prodotto, Utilizzo utilizzo)
         {
             _context.Prodotti.Add(prodotto);
             await _context.SaveChangesAsync();
