@@ -9,5 +9,7 @@ namespace BW_Clinica_Veterinaria.Interface
         Task<Vendita> Create(Vendita vendita);
         Task<Vendita> Update(Vendita vendita);
         Task<Vendita> Delete(int id);
+        Task<IEnumerable<Vendita>> GetVenditeByData(DateTime data);
+        Task<IEnumerable<Vendita>> GetVenditeByCodiceFiscale(string codiceFiscale);
     }
 }
