@@ -12,12 +12,14 @@ namespace BW_Clinica_Veterinaria.Service
     public class UtenteService : IUtenteService
     {
         private readonly DataContext _ctx;
+        private readonly IPasswordEncoder _passwordEncoder;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UtenteService(DataContext context, IHttpContextAccessor httpContextAccessor)
+        public UtenteService(DataContext context, IHttpContextAccessor httpContextAccessor, IPasswordEncoder passwordEncoder)
         {
             _ctx = context;
             _httpContextAccessor = httpContextAccessor;
+            _passwordEncoder = passwordEncoder;
         }
 
         public async Task<bool> Register(RegisterDto registerDto)
@@ -25,7 +27,7 @@ namespace BW_Clinica_Veterinaria.Service
             var utente = new Utente
             {
                 Email = registerDto.Email,
-                Password = registerDto.Password 
+                Password = _passwordEncoder.Encode(registerDto.Password) 
             };
 
             var ruolo = await _ctx.Ruoli.FirstOrDefaultAsync(r => r.Nome == registerDto.Ruolo);
@@ -44,9 +46,9 @@ namespace BW_Clinica_Veterinaria.Service
         public async Task<Utente> Login(LoginDto loginDto)
         {
             var user = await _ctx.Utenti.Include(u => u.Ruoli)
-                .FirstOrDefaultAsync(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
+                .FirstOrDefaultAsync(u => u.Email == loginDto.Email);
 
-            if (user == null)
+            if (user == null || !_passwordEncoder.IsSame(loginDto.Password, user.Password))
             {
                 return null;
             }
