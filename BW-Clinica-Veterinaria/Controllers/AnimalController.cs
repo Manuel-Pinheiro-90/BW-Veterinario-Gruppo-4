@@ -77,5 +77,50 @@ namespace BW_Clinica_Veterinaria.Controllers
             var ricoveri = await _ricoveroService.GetRicoveriMensili();
             return View(ricoveri);
         }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var animale = await _animalService.GetById(id);
+            if (animale == null)
+            {
+                return NotFound();
+            }
+            return View(animale);
+        }
+
+        public async Task<IActionResult> Visite(int id)
+        {
+            var animale = await _animalService.GetById(id);
+            if (animale == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Animale = animale;
+            var visite = await _animalService.GetVisiteByAnimaleId(id);
+            return View(visite);
+        }
+
+        public IActionResult AggiungiVisita(int idAnimale)
+        {
+            var visita = new Visita { IdAnimale = idAnimale, Data = DateTime.Now };
+            return View(visita);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AggiungiVisita([Bind("IdVisita,IdAnimale,Data,Esame,CuraPrescritta")] Visita visita)
+        {
+            
+                await _animalService.AggiungiVisita(visita);
+                return RedirectToAction("Visite", new { id = visita.IdAnimale });
+            
+        }
+
+
+
+
     }
 }
