@@ -106,14 +106,12 @@ namespace BW_Clinica_Veterinaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AggiungiVisita([Bind("IdAnimale,Data,Esame,CuraPrescritta")] Visita visita)
+        public async Task<IActionResult> AggiungiVisita([Bind("IdVisita,IdAnimale,Data,Esame,CuraPrescritta")] Visita visita)
         {
-            if (ModelState.IsValid)
-            {
+            
                 await _animalService.AggiungiVisita(visita);
                 return RedirectToAction("Visite", new { id = visita.IdAnimale });
-            }
-            return View(visita);
+            
         }
 
 
