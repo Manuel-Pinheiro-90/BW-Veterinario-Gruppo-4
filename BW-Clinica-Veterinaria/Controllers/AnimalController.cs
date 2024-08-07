@@ -47,7 +47,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View();
         }
 
-        public async Task<IActionResult> CercaPerMicrochip(string microchip)
+        public async Task<IActionResult> CercaPerMicrochipJson(string microchip)
         {
             var animale = await _animalService.GetByMicroChip(microchip);
             if (animale == null)

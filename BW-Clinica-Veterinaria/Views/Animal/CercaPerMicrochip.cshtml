@@ -24,7 +24,7 @@
                 var microchip = $("#microchip").val();
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("CercaPerMicrochip", "Animal")',
+                    url: '@Url.Action("CercaPerMicrochipJson", "Animal")',
                     data: { microchip: microchip },
                     success: function (response) {
                         if (response.success) {
