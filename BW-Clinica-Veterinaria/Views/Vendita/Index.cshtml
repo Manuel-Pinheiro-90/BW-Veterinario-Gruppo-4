@@ -4,27 +4,43 @@
     ViewData["Title"] = "Vendite";
 }
 
-<h1>Vendite</h1>
+<h1 class="my-4">Vendite</h1>
 
-<p>
+<div class="mb-3">
     <a asp-action="Create" class="btn btn-primary">Crea Nuova Vendita</a>
-</p>
+    <button id="resetFilters" class="btn btn-secondary">Azzera Filtri</button>
+</div>
 
-<table class="table">
+<div class="row mb-4">
+    <div class="col-md-6">
+        <h4>Ricerca per Data</h4>
+        <form asp-action="RicercaPerData" method="post" class="form-inline">
+            <div class="form-group mr-2">
+                <label for="data" class="mr-2">Data</label>
+                <input type="date" class="form-control" id="data" name="data" />
+            </div>
+            <button type="submit" class="btn btn-primary">Cerca</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h4>Ricerca per Codice Fiscale</h4>
+        <form asp-action="RicercaPerCodiceFiscale" method="post" class="form-inline">
+            <div class="form-group mr-2">
+                <label for="codiceFiscale" class="mr-2">Codice Fiscale</label>
+                <input type="text" class="form-control" id="codiceFiscale" name="codiceFiscale" />
+            </div>
+            <button type="submit" class="btn btn-primary">Cerca</button>
+        </form>
+    </div>
+</div>
+
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CodiceFiscaleCliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prodotto.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ricetta)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.CodiceFiscaleCliente)</th>
+            <th>@Html.DisplayNameFor(model => model.Prodotto.Nome)</th>
+            <th>@Html.DisplayNameFor(model => model.Data)</th>
+            <th>@Html.DisplayNameFor(model => model.Ricetta)</th>
             <th></th>
         </tr>
     </thead>
@@ -32,18 +48,10 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CodiceFiscaleCliente)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Prodotto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ricetta)
-                </td>
+                <td>@Html.DisplayFor(modelItem => item.CodiceFiscaleCliente)</td>
+                <td>@Html.DisplayFor(modelItem => item.Prodotto.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ricetta)</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.IdVendita" class="btn btn-info">Dettagli</a>
                 </td>
@@ -51,3 +59,13 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        document.getElementById('resetFilters').addEventListener('click', function () {
+            document.getElementById('data').value = '';
+            document.getElementById('codiceFiscale').value = '';
+            location.href = '@Url.Action("Index")';
+        });
+    </script>
+}
