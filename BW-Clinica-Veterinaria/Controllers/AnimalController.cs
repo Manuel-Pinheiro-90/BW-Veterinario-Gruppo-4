@@ -72,6 +72,11 @@ namespace BW_Clinica_Veterinaria.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public async Task<IActionResult> RicoveriMensili()
+        {
+            var ricoveri = await _ricoveroService.GetRicoveriMensili();
+            return View(ricoveri);
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///
 

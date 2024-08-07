@@ -46,5 +46,13 @@ namespace BW_Clinica_Veterinaria.Service
             var list = await _ctx.Ricoveri.Include(r => r.Animale).ToListAsync();
             return list;
         }
+
+        public async Task<IEnumerable<Ricovero>> GetRicoveriMensili()
+        {
+            var currentMonth = DateTime.Now.Month;
+            var currentYear = DateTime.Now.Year;
+            var list = await _ctx.Ricoveri.Where(r => r.DataFineRicovero == null || (r.DataFineRicovero.Value.Year == currentYear && r.DataFineRicovero.Value.Month == currentMonth)).Include(r => r.Animale).ToListAsync();
+            return list;
+        }
     }
 }

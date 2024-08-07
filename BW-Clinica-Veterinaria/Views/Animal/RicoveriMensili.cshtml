@@ -3,6 +3,84 @@
 
 @{
     ViewData["Title"] = "RicoveriMensili";
-    List<Ricovero> ricoveriAttivi = Model;
+    List<Ricovero> ricoveriAttivi = new List<Ricovero>();
+    var currentMonth = DateTime.Now.Month;
+    var currentYear = DateTime.Now.Year;
+
+    foreach (var r in Model)
+    {
+        if (r.DataFineRicovero == null)
+        {
+            ricoveriAttivi.Add(r);
+        }
+    }
 }
 
+<h1>Visualizza rimborso ricoveri</h1>
+
+<p>Premi il bottone per visualizzare <span><button>Visualizza</button></span></p>
+<p>Il rimborso viene calcolato sul numero di giorni che ogni animale passa in clinica durante il mese (tariffa giornaliera 5 &euro;)</p>
+<p id="rimborso-ricoveri"></p>
+
+
+
+<h6>Ricoveri attivi</h6>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id Ricovero</th>
+            <th>Data di ricovero</th>
+            <th>Data di fine ricovero</th>
+            <th>Foto</th>
+            <th>Nome</th>
+            <th>Specie</th>
+            <th>Colore</th>
+            <th>Codice microchip</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in ricoveriAttivi)
+        {
+            <tr>
+                <th>@r.IdRicovero</th>
+                <th>@r.DataRicovero</th>
+                <th>@(r.DataFineRicovero.HasValue ? r.DataFineRicovero.Value.ToString("dd/MM/yyyy") : "Ricovero Attivo")</th>
+                <th><img src="@r.Foto" alt="img ricovero" class="img-ricovero" /></th>
+                <th>@r.Animale.Name</th>
+                <th>@r.Animale.Tipologia</th>
+                <th>@r.Animale.Colore</th>
+                <th>@r.Animale.MicroChipCodice</th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+
+    <script>
+        function getCount() {
+            $.ajax({
+                url: '/api/orderapi/processed',
+                method: 'get',
+                success: (data) => {
+                    let countSpan = $("#count");
+                    countSpan.empty();
+                    countSpan.text(data);
+                },
+                error: (e) => console.log(e)
+            })
+
+            $.ajax({
+                url: '/api/orderapi/dailyrevenue',
+                method: 'get',
+                success: (data) => {
+                    let totalSpan = $("#total");
+                    totalSpan.empty();
+                    totalSpan.text(data);
+                },
+                error: (e) => console.log(e)
+            })
+        }
+    </script>
+}
