@@ -37,7 +37,9 @@ namespace BW_Clinica_Veterinaria.Service
         ////////////////////////////////////////////////////////////
         public async Task<Animale> GetById(int id)
         {
-            return await _ctx.Animali.SingleOrDefaultAsync(a => a.IdAnimale == id);
+            return await _ctx.Animali
+                .Include(a=> a.Proprietario)
+                .SingleOrDefaultAsync(a => a.IdAnimale == id);
         }
 
         public async Task<IEnumerable<Visita>> GetVisiteByAnimaleId(int idAnimale)

@@ -23,11 +23,11 @@
         <dt class="col-sm-2">Data di Registrazione</dt>
         <dd class="col-sm-10">@Model.DataRegistrazione.ToString("dd/MM/yyyy")</dd>
         <dt class="col-sm-2">Proprietario</dt>
-        <dd class="col-sm-10">@Model.Proprietario?.Nome ?? "N/A"</dd>
+        <dd class="col-sm-10">@Model.Proprietario?.Nome </dd>
     </dl>
 </div>
 <div>
-    <a asp-controller="Proprietari" asp-action="Index">Torna alla Lista</a>
+    <a asp-controller="Proprietari" asp-action="Index" class="btn btn-secondary">Torna alla Lista Proprietari</a>
     <a asp-action="Visite" asp-route-id="@Model.IdAnimale" class="btn btn-secondary">Cronistoria Visite</a>
     <a asp-action="AggiungiVisita" asp-route-idAnimale="@Model.IdAnimale" class="btn btn-primary">Aggiungi Visita</a>
 </div>
