@@ -49,12 +49,12 @@ namespace BW_Clinica_Veterinaria.Controllers
 
         public async Task<IActionResult> CercaPerMicrochipJson(string microchip)
         {
-            var animale = await _animalService.GetRicoveroByMicroChip(microchip);
-            if (animale == null)
+            var ricovero = await _animalService.GetRicoveroByMicroChip(microchip);
+            if (ricovero == null)
             {
-                return Json(new { success = false, message = "Nessun animale trovato con questo codice microchip." });
+                return Json(new { success = false, message = "Nessun ricovero trovato con questo codice microchip." });
             }
-            return Json(new { success = true, data = animale });
+            return Json(new { success = true, data = ricovero });
         }
 
         // Il ricovero può essere effettutato solo su animali registrati, poiché necessita del campo animaleId

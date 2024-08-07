@@ -28,13 +28,18 @@
                     data: { microchip: microchip },
                     success: function (response) {
                         if (response.success) {
+                            var animal = response.data.animale;
+                            var ricovero = response.data.ricovero;
+                            var proprietario = animal.proprietario;
                             var animalDetails = "<dl class='row'>" +
-                                "<dt class='col-sm-2'>Nome</dt><dd class='col-sm-10'>" + response.data.name + "</dd>" +
-                                "<dt class='col-sm-2'>Tipologia</dt><dd class='col-sm-10'>" + response.data.tipologia + "</dd>" +
-                                "<dt class='col-sm-2'>Colore</dt><dd class='col-sm-10'>" + response.data.colore + "</dd>" +
-                                "<dt class='col-sm-2'>Microchip</dt><dd class='col-sm-10'>" + response.data.microChipCodice + "</dd>" +
-                                "<dt class='col-sm-2'>Data di Nascita</dt><dd class='col-sm-10'>" + new Date(response.data.dataNascita).toLocaleDateString() + "</dd>" +
-                                "<dt class='col-sm-2'>Proprietario</dt><dd class='col-sm-10'>" + (response.data.proprietario ? response.data.proprietario.nome : 'N/A') + "</dd>" +
+                                "<dt class='col-sm-2'>Nome</dt><dd class='col-sm-10'>" + animal.nome + "</dd>" +
+                                "<dt class='col-sm-2'>Tipologia</dt><dd class='col-sm-10'>" + animal.tipologia + "</dd>" +
+                                "<dt class='col-sm-2'>Colore</dt><dd class='col-sm-10'>" + animal.colore + "</dd>" +
+                                "<dt class='col-sm-2'>Microchip</dt><dd class='col-sm-10'>" + animal.microChipCodice + "</dd>" +
+                                "<dt class='col-sm-2'>Data di Nascita</dt><dd class='col-sm-10'>" + new Date(animal.dataNascita).toLocaleDateString() + "</dd>" +
+                                "<dt class='col-sm-2'>Proprietario</dt><dd class='col-sm-10'>" + (proprietario ? proprietario.nome : 'N/A') + "</dd>" +
+                                "<dt class='col-sm-2'>Data Inizio Ricovero</dt><dd class='col-sm-10'>" + new Date(ricovero.dataInizioRicovero).toLocaleDateString() + "</dd>" +
+                                "<dt class='col-sm-2'>Data Fine Ricovero</dt><dd class='col-sm-10'>" + (ricovero.dataFineRicovero ? new Date(ricovero.dataFineRicovero).toLocaleDateString() : 'In corso') + "</dd>" +
                                 "</dl>";
                             $("#result").html(animalDetails);
                         } else {
