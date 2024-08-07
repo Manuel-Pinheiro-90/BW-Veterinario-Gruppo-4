@@ -49,7 +49,7 @@ namespace BW_Clinica_Veterinaria.Controllers
 
         public async Task<IActionResult> CercaPerMicrochipJson(string microchip)
         {
-            var animale = await _animalService.GetByMicroChip(microchip);
+            var animale = await _animalService.GetRicoveroByMicroChip(microchip);
             if (animale == null)
             {
                 return Json(new { success = false, message = "Nessun animale trovato con questo codice microchip." });
