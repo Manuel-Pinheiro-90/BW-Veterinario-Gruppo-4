@@ -25,7 +25,7 @@ namespace BW_Clinica_Veterinaria.Service
 
         public async Task<Prodotto> GetProdottoByIdAsync(int id)
         {
-            return await _context.Prodotti.Include(p => p.Ditta).Include(p => p.Cassetto)
+            return await _context.Prodotti.Include(p => p.Ditta).Include(p => p.Cassetto).Include(p => p.Utilizzi)
                 .FirstOrDefaultAsync(p => p.IdProdotto == id);
         }
 

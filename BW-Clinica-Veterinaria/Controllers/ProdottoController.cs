@@ -10,64 +10,26 @@ namespace BW_Clinica_Veterinaria.Controllers
     {
         private readonly IProdottoService _prodottoService;
 
-        public ProdottoController(IProdottoService prodottoService)
+
+        public ProdottoController(IProdottoService prodottoRepository)
         {
-            _prodottoService = prodottoService;
+            _prodottoService = prodottoRepository;
         }
 
-       
-        public async Task<ActionResult<IEnumerable<Prodotto>>> GetProdotti()
+        public async Task<IActionResult> Index()
         {
             var prodotti = await _prodottoService.GetAllProdottiAsync();
-            return Ok(prodotti);
+            return View(prodotti);
         }
-
-      
-        public async Task<ActionResult<Prodotto>> GetProdotto(int id)
+        public async Task<IActionResult> Details(int id)
         {
             var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
             if (prodotto == null)
             {
                 return NotFound();
             }
-            return Ok(prodotto);
+            return View(prodotto);
         }
-
-        [HttpPost]
-        public async Task<ActionResult<Prodotto>> PostProdotto(Prodotto prodotto)
-        {
-            var newProdotto = await _prodottoService.AddProdottoAsync(prodotto);
-            return CreatedAtAction(nameof(GetProdotto), new { id = newProdotto.IdProdotto }, newProdotto);
-        }
-
-        [HttpPut]
-        public async Task<IActionResult> PutProdotto(int id, Prodotto prodotto)
-        {
-            if (id != prodotto.IdProdotto)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                await _prodottoService.UpdateProdottoAsync(prodotto);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (await _prodottoService.GetProdottoByIdAsync(id) == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-       // [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -84,18 +46,63 @@ namespace BW_Clinica_Veterinaria.Controllers
             }
             return View(prodotto);
         }
-
-
-        [HttpDelete]
-        public async Task<IActionResult> DeleteProdotto(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var deleted = await _prodottoService.DeleteProdottoAsync(id);
-            if (!deleted)
+            var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
+            if (prodotto == null)
             {
                 return NotFound();
             }
+            return View(prodotto);
+        }
 
-            return NoContent();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Prodotto prodotto)
+        {
+            if (id != prodotto.IdProdotto)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _prodottoService.UpdateProdottoAsync(prodotto);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (await _prodottoService.GetProdottoByIdAsync(id) == null)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(prodotto);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
+            if (prodotto == null)
+            {
+                return NotFound();
+            }
+            return View(prodotto);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            await _prodottoService.DeleteProdottoAsync(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
