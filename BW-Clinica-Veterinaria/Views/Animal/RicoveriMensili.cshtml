@@ -16,6 +16,13 @@
     }
 }
 
+<h1>Visualizza rimborso ricoveri</h1>
+
+<p>Premi il bottone per visualizzare <span><button>Visualizza</button></span></p>
+<p>Il rimborso viene calcolato sul numero di giorni che ogni animale passa in clinica durante il mese (tariffa giornaliera 5 &euro;)</p>
+<p id="rimborso-ricoveri"></p>
+
+
 
 <h6>Ricoveri attivi</h6>
 
@@ -48,3 +55,32 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+
+    <script>
+        function getCount() {
+            $.ajax({
+                url: '/api/orderapi/processed',
+                method: 'get',
+                success: (data) => {
+                    let countSpan = $("#count");
+                    countSpan.empty();
+                    countSpan.text(data);
+                },
+                error: (e) => console.log(e)
+            })
+
+            $.ajax({
+                url: '/api/orderapi/dailyrevenue',
+                method: 'get',
+                success: (data) => {
+                    let totalSpan = $("#total");
+                    totalSpan.empty();
+                    totalSpan.text(data);
+                },
+                error: (e) => console.log(e)
+            })
+        }
+    </script>
+}
