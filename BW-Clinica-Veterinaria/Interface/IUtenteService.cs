@@ -5,8 +5,9 @@ namespace BW_Clinica_Veterinaria.Interface
 {
     public interface IUtenteService
     {
-        Task<Utente> Login(LoginDto loginDto);
-        Task<bool> Register(RegisterDto registerDto);
-        Task Logout();
+        public Task<Utente> Login(LoginDto loginDto);
+        public Task<bool> Register(RegisterDto registerDto);
+        public Task Logout();
+        public Task<List<Ruolo>> GetRuoli();
     }
 }

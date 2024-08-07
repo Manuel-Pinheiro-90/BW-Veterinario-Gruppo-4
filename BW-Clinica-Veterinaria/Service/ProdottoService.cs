@@ -4,6 +4,8 @@ using BW_Clinica_Veterinaria.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using BW_Clinica_Veterinaria.Interface;
+using Microsoft.AspNetCore.Mvc;
+using BW_Clinica_Veterinaria.Dto;
 
 namespace BW_Clinica_Veterinaria.Service
 {
@@ -29,11 +31,30 @@ namespace BW_Clinica_Veterinaria.Service
                 .FirstOrDefaultAsync(p => p.IdProdotto == id);
         }
 
-        public async Task<Prodotto> AddProdottoAsync(Prodotto prodotto)
+        public async Task<List<Utilizzo>> GetUtilizziAsync()
         {
-            _context.Prodotti.Add(prodotto);
+            return await _context.Utilizzi.ToListAsync();
+        }
+
+
+        public async Task<Prodotto> AddProdottoAsync(ProdottoDto model, List<int> utilizziId)
+        {
+            var utilizzi = await _context.Utilizzi
+                   .Where(u => utilizziId.Contains(u.IdUtilizzo))
+                   .ToListAsync();
+
+            var prodottoFinale = new Prodotto
+            {
+                IdDitta = model.IdDitta,
+                IdCassetto = model.IdCassetto,
+                Nome = model.Nome,
+                Tipo = model.Tipo,
+                Utilizzi = utilizzi
+            };
+
+            _context.Prodotti.Add(prodottoFinale);
             await _context.SaveChangesAsync();
-            return prodotto;
+            return prodottoFinale;
         }
 
         public async Task<Prodotto> UpdateProdottoAsync(Prodotto prodotto)
@@ -43,6 +64,7 @@ namespace BW_Clinica_Veterinaria.Service
             return prodotto;
         }
 
+       
         public async Task<bool> DeleteProdottoAsync(int id)
         {
             var prodotto = await _context.Prodotti.FindAsync(id);

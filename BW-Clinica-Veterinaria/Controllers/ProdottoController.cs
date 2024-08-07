@@ -1,4 +1,5 @@
-﻿using BW_Clinica_Veterinaria.Interface;
+﻿using BW_Clinica_Veterinaria.Dto;
+using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
 using BW_Clinica_Veterinaria.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -30,22 +31,28 @@ namespace BW_Clinica_Veterinaria.Controllers
             }
             return View(prodotto);
         }
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Utilizzi = await _prodottoService.GetUtilizziAsync();
             return View();
+            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Prodotto prodotto)
+        public async Task<IActionResult> Create(ProdottoDto model, List<int> utilizziId)
         {
             if (ModelState.IsValid)
             {
-                await _prodottoService.AddProdottoAsync(prodotto);
+                await _prodottoService.AddProdottoAsync(model, utilizziId);
                 return RedirectToAction(nameof(Index));
             }
-            return View(prodotto);
+            return View(model);
         }
+
+
+      
+
         public async Task<IActionResult> Edit(int id)
         {
             var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
