@@ -1,5 +1,6 @@
 ﻿@model BW_Clinica_Veterinaria.Models.Entity.Prodotto
 
+
 @{
     ViewData["Title"] = "Crea Nuovo Prodotto";
 }
@@ -35,6 +36,18 @@
                 <input type="submit" value="Crea" class="btn btn-primary" />
             </div>
         </form>
+        <div class="form-group container-fluid">
+            <div class="row">
+                @foreach (var utilizzi in Model.Utilizzi)
+                {
+                    <div class="form-check col-6">
+                        <input class="form-check-input" type="checkbox" name="utilizzi" value="@utilizzi.Descrizione" />
+                        <label class="form-check-label">@utilizzi.Descrizione</label>
+                    </div>
+                }
+            </div>
+
+        </div>
     </div>
 </div>
 

@@ -4,6 +4,7 @@ using BW_Clinica_Veterinaria.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using BW_Clinica_Veterinaria.Interface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BW_Clinica_Veterinaria.Service
 {
@@ -29,12 +30,20 @@ namespace BW_Clinica_Veterinaria.Service
                 .FirstOrDefaultAsync(p => p.IdProdotto == id);
         }
 
+        public async Task<List<Utilizzo>> GetUtilizziAsync()
+        {
+            return await _context.Utilizzi.ToListAsync();
+        }
+
+
         public async Task<Prodotto> AddProdottoAsync(Prodotto prodotto)
         {
             _context.Prodotti.Add(prodotto);
             await _context.SaveChangesAsync();
             return prodotto;
         }
+
+
 
         public async Task<Prodotto> UpdateProdottoAsync(Prodotto prodotto)
         {
@@ -43,6 +52,7 @@ namespace BW_Clinica_Veterinaria.Service
             return prodotto;
         }
 
+       
         public async Task<bool> DeleteProdottoAsync(int id)
         {
             var prodotto = await _context.Prodotti.FindAsync(id);

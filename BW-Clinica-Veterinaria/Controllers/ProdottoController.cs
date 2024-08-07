@@ -30,9 +30,11 @@ namespace BW_Clinica_Veterinaria.Controllers
             }
             return View(prodotto);
         }
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Utilizzi = await _prodottoService.GetUtilizziAsync();
             return View();
+            
         }
 
         [HttpPost]
