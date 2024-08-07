@@ -8,5 +8,6 @@ namespace BW_Clinica_Veterinaria.Interface
         public string ConvertImage(IFormFile file);
         public Task<Ricovero> AggiungiRicovero(RicoveroDto model);
         public Task<IEnumerable<Ricovero>> GetAll();
+        public Task<IEnumerable<Ricovero>> GetRicoveriMensili();
     }
 }

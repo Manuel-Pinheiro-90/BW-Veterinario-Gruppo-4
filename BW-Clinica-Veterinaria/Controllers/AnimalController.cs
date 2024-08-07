@@ -4,6 +4,7 @@ using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
@@ -72,8 +73,32 @@ namespace BW_Clinica_Veterinaria.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public async Task<IActionResult> RicoveriMensili()
+        {
+            var ricoveri = await _ricoveroService.GetRicoveriMensili();
+            decimal tariffa = 5;
+            decimal totale = 0;
+            var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+            foreach (var r in ricoveri)
+            {
+                var startDate = r.DataRicovero;
+                if (firstDayOfMonth > startDate)
+                {
+                    startDate = firstDayOfMonth;
+                }
+                var endDate = (r.DataFineRicovero.HasValue ? r.DataFineRicovero.Value : DateTime.Now);
+                var giorni = (endDate - startDate).TotalDays;
+                totale += (decimal)giorni * tariffa;
+            }
+
+            ViewBag.Totale = totale.ToString("F2");
+
+            return View(ricoveri);
+        }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///
+
 
         public async Task<IActionResult> Details(int id)
         {
@@ -108,14 +133,8 @@ namespace BW_Clinica_Veterinaria.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AggiungiVisita([Bind("IdVisita,IdAnimale,Data,Esame,CuraPrescritta")] Visita visita)
         {
-            
-                await _animalService.AggiungiVisita(visita);
-                return RedirectToAction("Visite", new { id = visita.IdAnimale });
-            
+            await _animalService.AggiungiVisita(visita);
+            return RedirectToAction("Visite", new { id = visita.IdAnimale });
         }
-
-
-
-
     }
 }
