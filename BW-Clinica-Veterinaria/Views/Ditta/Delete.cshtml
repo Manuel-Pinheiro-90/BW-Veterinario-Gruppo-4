@@ -1,0 +1,39 @@
+﻿@model BW_Clinica_Veterinaria.Models.Entity.Ditta
+
+@{
+    ViewData["Title"] = "Delete - " + Model.Nome;
+}
+
+<h1>Elimina</h1>
+
+<h3>Sei sicuro di voler eliminare questa ditta?</h3>
+<div>
+    <h4>@Model.Nome</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Indirizzo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Indirizzo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Recapito)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Recapito)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdDitta" />
+        <input type="submit" value="Elimina" class="btn btn-danger" /> |
+        <a asp-action="Index">Torna all'elenco</a>
+    </form>
+</div>
