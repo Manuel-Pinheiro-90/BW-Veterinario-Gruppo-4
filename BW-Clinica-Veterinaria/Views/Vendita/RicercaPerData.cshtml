@@ -1,0 +1,15 @@
+﻿@model DateTime?
+
+@{
+    ViewData["Title"] = "Ricerca Vendite per Data";
+}
+
+<h1>Ricerca Vendite per Data</h1>
+
+<form asp-action="RicercaPerData" method="post">
+    <div class="form-group">
+        <label for="data">Data</label>
+        <input type="date" class="form-control" id="data" name="data" />
+    </div>
+    <button type="submit" class="btn btn-primary">Cerca</button>
+</form>

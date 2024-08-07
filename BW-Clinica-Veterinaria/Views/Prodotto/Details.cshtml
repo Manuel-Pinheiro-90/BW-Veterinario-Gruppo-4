@@ -40,6 +40,15 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cassetto.NumeroCassetto)
         </dd>
+         @foreach (var item in Model.Utilizzi)
+        {
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => item.Descrizione)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => item.Descrizione)
+        </dd>
+        }
     </dl>
 </div>
 <div>

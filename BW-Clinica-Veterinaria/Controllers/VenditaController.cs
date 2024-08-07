@@ -49,5 +49,29 @@ namespace BW_Clinica_Veterinaria.Controllers
             }
             return View(vendita);
         }
+
+        public async Task<IActionResult> RicercaPerData()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RicercaPerData(DateTime data)
+        {
+            var vendite = await _venditaService.GetVenditeByData(data);
+            return View("Index", vendite);
+        }
+
+        public async Task<IActionResult> RicercaPerCodiceFiscale()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RicercaPerCodiceFiscale(string codiceFiscale)
+        {
+            var vendite = await _venditaService.GetVenditeByCodiceFiscale(codiceFiscale);
+            return View("Index", vendite);
+        }
     }
 }

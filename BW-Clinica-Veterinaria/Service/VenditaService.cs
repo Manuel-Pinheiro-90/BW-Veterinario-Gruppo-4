@@ -55,5 +55,21 @@ namespace BW_Clinica_Veterinaria.Service
             }
             return vendita;
         }
+
+        public async Task<IEnumerable<Vendita>> GetVenditeByData(DateTime data)
+        {
+            return await _ctx.Vendite
+                .Include(x => x.Prodotto)
+                .Where(x => x.Data.Date == data.Date)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Vendita>> GetVenditeByCodiceFiscale(string codiceFiscale)
+        {
+            return await _ctx.Vendite
+                .Include(x => x.Prodotto)
+                .Where(x => x.Proprietario.CodiceFiscale == codiceFiscale)
+                .ToListAsync();
+        }
     }
 }
