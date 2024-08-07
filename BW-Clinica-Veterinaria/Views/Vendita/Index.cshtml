@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BW_Clinica_Veterinaria.Models.Entity.Vendita>
+
+@{
+    ViewData["Title"] = "Vendite";
+}
+
+<h1>Vendite</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crea Nuova Vendita</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodiceFiscaleCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prodotto.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ricetta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodiceFiscaleCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prodotto.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ricetta)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.IdVendita" class="btn btn-info">Dettagli</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
