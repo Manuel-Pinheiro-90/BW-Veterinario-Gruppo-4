@@ -38,6 +38,7 @@
             <th>Specie</th>
             <th>Colore</th>
             <th>Codice microchip</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -52,6 +53,7 @@
                 <th>@r.Animale.Tipologia</th>
                 <th>@r.Animale.Colore</th>
                 <th>@r.Animale.MicroChipCodice</th>
+                <th><a asp-action="ModificaRicovero" asp-route-id="@r.IdRicovero" class="btn btn-danger">Termina Ricovero</a></th>
             </tr>
         }
     </tbody>

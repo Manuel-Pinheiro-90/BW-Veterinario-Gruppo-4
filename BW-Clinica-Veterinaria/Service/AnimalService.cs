@@ -56,14 +56,5 @@ namespace BW_Clinica_Veterinaria.Service
             return visita;
         }
 
-
-
-
-
-
-
-
-
-
     }
 }
