@@ -7,9 +7,9 @@
         <img src="~/image/banner2.png" alt="Banner" class="img-fluid banner-img" />
     </div>
     <h1 class="display-4 font-weight-bold mt-4">Benvenuto</h1>
-    <p class="lead text-muted">Utilizza i link sottostanti per registrarti o accedere</p>
     @if (!User.Identity.IsAuthenticated)
     {
+        <p class="lead text-muted">Utilizza i link sottostanti per registrarti o accedere</p>
         <div class="mt-4">
             <a asp-controller="Utente" asp-action="Register" class="btn btn-primary btn-lg m-2">Registrati</a>
             <a asp-controller="Utente" asp-action="Login" class="btn btn-success btn-lg m-2">Accedi</a>

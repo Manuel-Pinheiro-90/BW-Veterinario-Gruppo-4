@@ -24,3 +24,13 @@ body {
 .img-ricovero {
     width: 5em;
 }
+
+.bi {
+    color: #007bff;
+    font-size: 1.8em;
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 10px;
+}

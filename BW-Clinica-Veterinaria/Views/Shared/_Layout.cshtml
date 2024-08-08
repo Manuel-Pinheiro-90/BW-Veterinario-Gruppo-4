@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Clinica Veterinaria Benessere Pet </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/image/logo2.jpg" alt="Logo" style="height: 40px; margin-right: 10px;">
+                    <img src="~/image/logo2.jpg" alt="Logo" class="logo-img" >
                     Clinica Veterinaria Benessere Pet
                 </a>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -53,14 +54,14 @@
                                 <a class="nav-link" asp-controller="Proprietari" asp-action="Index">Proprietari</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Animal" asp-action="AggiungiAnimale">Aggiungi Animale</a>
+                                <a class="nav-link" asp-controller="Animal" asp-action="AggiungiAnimale">AggiungiAnimale</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Animal" asp-action="CercaPerMicrochip">cerca il tuo cane smarrito</a>
+                                <a class="nav-link" asp-controller="Animal" asp-action="CercaPerMicrochip">RicercaMicrochip</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Animal" asp-action="AggiungiRicovero">Aggiungi un animale al Ricovero</a>
+                                <a class="nav-link" asp-controller="Animal" asp-action="AggiungiRicovero">AggiungiRicovero</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Animal" asp-action="RicoveriMensili">RicoveriMensili</a>
@@ -74,15 +75,22 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container mb-5">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - BW Clinica Veterinaria
+    <footer class="d-flex flex-wrap justify-content-around align-items-center p-3 my-4 border-top footer text-muted fixed-bottom bottom-0">
+        <div class="col-md-4 d-flex align-items-center">
+            <img src="~/image/logo2.jpg" alt="Logo" class="logo-img" />
+            <span class="mb-3 mb-md-0 text-body-secondary">© @DateTime.Now.Year  BW Clinica Veterinaria</span>
         </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-twitter"></i></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-instagram"></i></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-facebook"></i></a></li>
+        </ul>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
