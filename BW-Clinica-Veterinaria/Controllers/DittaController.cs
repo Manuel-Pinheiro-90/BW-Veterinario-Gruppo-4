@@ -1,4 +1,4 @@
-﻿using BW_Clinica_Veterinaria.Dto;
+﻿using BW_Clinica_Veterinaria.Context;
 using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
 using BW_Clinica_Veterinaria.Service;
@@ -9,80 +9,82 @@ using Microsoft.EntityFrameworkCore;
 namespace BW_Clinica_Veterinaria.Controllers
 {
     [Authorize(Roles = "Farmacista")]
-    public class ProdottoController : Controller
+    public class DittaController : Controller
     {
-        private readonly IProdottoService _prodottoService;
 
+        private readonly IDittaService _dittaService;
+        private readonly DataContext _context;
 
-        public ProdottoController(IProdottoService prodottoRepository)
+        public DittaController(IDittaService dittaRepository, DataContext DbContext)
         {
-            _prodottoService = prodottoRepository;
+            _dittaService = dittaRepository;
+            _context = DbContext;
         }
-
         public async Task<IActionResult> Index()
         {
-            var prodotti = await _prodottoService.GetAllProdottiAsync();
-            return View(prodotti);
+            var ditte = await _dittaService.GetAllDitte();
+            return View(ditte);
         }
-        public async Task<IActionResult> Details(int id)
+
+        public IActionResult Create()
         {
-            var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
-            if (prodotto == null)
-            {
-                return NotFound();
-            }
-            return View(prodotto);
-        }
-        public async Task<IActionResult> Create()
-        {
-            ViewBag.Utilizzi = await _prodottoService.GetUtilizziAsync();
             return View();
-            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ProdottoDto model, List<int> utilizziId)
+        public async Task<IActionResult> Create([Bind("Nome,Indirizzo,Recapito")] Ditta ditta)
         {
             if (ModelState.IsValid)
             {
-                await _prodottoService.AddProdottoAsync(model, utilizziId);
+                await _dittaService.Create(ditta);
                 return RedirectToAction(nameof(Index));
             }
-            return View(model);
+            return View(ditta);
         }
 
-
-      
-
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
-            if (prodotto == null)
+            var ditta = await _dittaService.GetDittaById(id);
+            if (ditta == null)
             {
                 return NotFound();
             }
-            return View(prodotto);
+            return View(ditta);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            var ditta = await _dittaService.GetDittaById(id);
+            if (ditta == null)
+            {
+                return NotFound();
+            }
+            return View(ditta);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Prodotto prodotto)
+        public async Task<IActionResult> Edit(int id, [Bind("IdDitta,Nome,Indirizzo,Recapito")] Ditta ditta)
         {
-            if (id != prodotto.IdProdotto)
+            if (id != ditta.IdDitta)
             {
                 return BadRequest();
             }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await _prodottoService.UpdateProdottoAsync(prodotto);
+                    await _dittaService.Update(ditta);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (await _prodottoService.GetProdottoByIdAsync(id) == null)
+                    if(await _dittaService.GetDittaById(id) == null)
                     {
                         return NotFound();
                     }
@@ -93,24 +95,30 @@ namespace BW_Clinica_Veterinaria.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(prodotto);
+            return View(ditta);
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
-            if (prodotto == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            return View(prodotto);
+
+            var ditta = await _dittaService.GetDittaById(id);
+            if (ditta == null)
+            {
+                return NotFound();
+            }
+
+            return View(ditta);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _prodottoService.DeleteProdottoAsync(id);
+            await _dittaService.Delete(id);
             return RedirectToAction(nameof(Index));
         }
     }

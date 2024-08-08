@@ -31,23 +31,38 @@
                                 <a class="nav-link" asp-controller="Utente" asp-action="Login">Login</a>
                             </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Proprietari" asp-action="Index">Proprietari</a>
-                        </li>
+                         @if (User.IsInRole("Farmacista"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Vendita" asp-action="Index">Vendite</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Prodotto" asp-action="Index">Prodotto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Ditta" asp-action="Index">Ditte</a>
+                            </li>
+                        }
 
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Animal" asp-action="AggiungiAnimale">Aggiungi Animale</a>
-                        </li>
+                         @if (User.IsInRole("Veterinario"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Proprietari" asp-action="Index">Proprietari</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Animal" asp-action="AggiungiAnimale">Aggiungi Animale</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Animal" asp-action="CercaPerMicrochip">cerca il tuo cane smarrito</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Prodotto" asp-action="Index">Prodotto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Vendita" asp-action="Index">Vendite</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Animal" asp-action="RicoveriMensili">RicoveriMensili</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Animal" asp-action="AggiungiRicovero">Aggiungi un animale al Ricovero</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Animal" asp-action="RicoveriMensili">RicoveriMensili</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Animal" asp-action="CercaPerMicrochip">CercaPerMicrochip</a>
                         </li>

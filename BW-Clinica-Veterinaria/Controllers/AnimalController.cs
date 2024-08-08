@@ -2,12 +2,14 @@
 using BW_Clinica_Veterinaria.Dto;
 using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
+    [Authorize]
     public class AnimalController : Controller
     {
         private readonly DataContext _ctx;
@@ -27,7 +29,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "Veterinario")]
         public async Task<IActionResult> AggiungiAnimale()
         {
             ViewBag.Proprietari = await _proprietarioService.GetAll();
@@ -35,18 +37,19 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Veterinario")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AggiungiAnimale(Animale animale)
         {
             await _animalService.AggiungiAnimale(animale);
             return RedirectToAction("Index", "Home");
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> CercaPerMicrochip()
         {
             return View();
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> CercaPerMicrochipJson(string microchip)
         {
             var ricovero = await _animalService.GetRicoveroByMicroChip(microchip);
@@ -59,6 +62,8 @@ namespace BW_Clinica_Veterinaria.Controllers
 
         // Il ricovero può essere effettutato solo su animali registrati, poiché necessita del campo animaleId
         // Se un animale non noto dovesse essere ricoverato deve prima essere registrato, per poi poter registrare il ricovero
+
+        [Authorize(Roles = "Veterinario")]
         public async Task<IActionResult> AggiungiRicovero()
         {
             ViewBag.Animali = await _animalService.GetAll();
@@ -66,6 +71,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Veterinario")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AggiungiRicovero(RicoveroDto model)
         {
@@ -73,6 +79,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Veterinario")]
         public async Task<IActionResult> RicoveriMensili()
         {
             var ricoveri = await _ricoveroService.GetRicoveriMensili();
@@ -99,7 +106,7 @@ namespace BW_Clinica_Veterinaria.Controllers
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+        [Authorize(Roles = "Veterinario")]
         public async Task<IActionResult> Details(int id)
         {
             var animale = await _animalService.GetById(id);
@@ -109,7 +116,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             }
             return View(animale);
         }
-
+        [Authorize(Roles = "Veterinario")]
         public async Task<IActionResult> Visite(int id)
         {
             var animale = await _animalService.GetById(id);
@@ -122,7 +129,7 @@ namespace BW_Clinica_Veterinaria.Controllers
             var visite = await _animalService.GetVisiteByAnimaleId(id);
             return View(visite);
         }
-
+        [Authorize(Roles = "Veterinario")]
         public IActionResult AggiungiVisita(int idAnimale)
         {
             var visita = new Visita { IdAnimale = idAnimale, Data = DateTime.Now };
@@ -130,6 +137,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Veterinario")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AggiungiVisita([Bind("IdVisita,IdAnimale,Data,Esame,CuraPrescritta")] Visita visita)
         {
