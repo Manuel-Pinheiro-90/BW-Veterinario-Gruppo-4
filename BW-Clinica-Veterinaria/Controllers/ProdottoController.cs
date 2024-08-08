@@ -12,9 +12,9 @@ namespace BW_Clinica_Veterinaria.Controllers
         private readonly IProdottoService _prodottoService;
 
 
-        public ProdottoController(IProdottoService prodottoRepository)
+        public ProdottoController(IProdottoService prodottoService)
         {
-            _prodottoService = prodottoRepository;
+            _prodottoService = prodottoService;
         }
 
         public async Task<IActionResult> Index()
