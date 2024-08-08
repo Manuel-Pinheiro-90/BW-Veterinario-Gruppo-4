@@ -5,6 +5,7 @@ using BW_Clinica_Veterinaria.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
@@ -12,11 +13,13 @@ namespace BW_Clinica_Veterinaria.Controllers
     public class ProdottoController : Controller
     {
         private readonly IProdottoService _prodottoService;
+        private readonly IDittaService _dittaService;
 
 
-        public ProdottoController(IProdottoService prodottoRepository)
+        public ProdottoController(IProdottoService prodottoRepository, IDittaService dittaService)
         {
             _prodottoService = prodottoRepository;
+            _dittaService = dittaService;
         }
 
         public async Task<IActionResult> Index()
@@ -35,6 +38,8 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
         public async Task<IActionResult> Create()
         {
+            ViewBag.Ditte = await _dittaService.GetAllDitte();
+            ViewBag.Cassetti = await _prodottoService.GetCassettiAsync();
             ViewBag.Utilizzi = await _prodottoService.GetUtilizziAsync();
             return View();
             
@@ -64,6 +69,10 @@ namespace BW_Clinica_Veterinaria.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Ditte = await _dittaService.GetAllDitte();
+            ViewBag.Cassetti = await _prodottoService.GetCassettiAsync();
+
             return View(prodotto);
         }
 

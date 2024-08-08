@@ -21,6 +21,14 @@ body {
     margin-bottom: 60px;
 }
 
+.footer {
+    background-color: #f8f9fa !important;
+}
+
+.margin-main {
+    margin-bottom: 150px
+}
+
 .img-ricovero {
     width: 5em;
 }
