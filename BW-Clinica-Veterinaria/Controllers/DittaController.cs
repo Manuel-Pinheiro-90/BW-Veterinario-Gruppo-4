@@ -2,11 +2,13 @@
 using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
 using BW_Clinica_Veterinaria.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
+    [Authorize(Roles = "Farmacista")]
     public class DittaController : Controller
     {
 
