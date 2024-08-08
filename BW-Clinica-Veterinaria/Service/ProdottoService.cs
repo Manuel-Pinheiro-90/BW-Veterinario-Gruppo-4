@@ -78,5 +78,13 @@ namespace BW_Clinica_Veterinaria.Service
             return true;
         }
 
+        public async Task<IEnumerable<Prodotto>> GetNomeProdotto(string nome)
+        {
+            return await _context.Prodotti
+                .Include(p => p.Ditta)
+                .Include(p => p.Cassetto)
+                .Where(p => p.Nome.Contains(nome))
+                .ToListAsync();
+        }
     }
 }

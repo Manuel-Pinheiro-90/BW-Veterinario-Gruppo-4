@@ -111,5 +111,11 @@ namespace BW_Clinica_Veterinaria.Controllers
             await _prodottoService.DeleteProdottoAsync(id);
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> GetNomeProdotto(string nome)
+        {
+            var prodotto = await _prodottoService.GetNomeProdotto(nome);
+            return View("Index", prodotto);
+        }
     }
 }

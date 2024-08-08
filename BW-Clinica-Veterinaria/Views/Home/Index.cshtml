@@ -3,17 +3,63 @@
 }
 
 <div class="text-center mt-5">
-    <h1 class="display-4">Benvenuto</h1>
-    <p class="lead">Utilizza i link sottostanti per registrarti o accedere</p>
+    <div class="banner-container">
+        <img src="~/image/banner2.png" alt="Banner" class="img-fluid banner-img" />
+    </div>
+    <h1 class="display-4 font-weight-bold mt-4">Benvenuto</h1>
+    <p class="lead text-muted">Utilizza i link sottostanti per registrarti o accedere</p>
     @if (!User.Identity.IsAuthenticated)
     {
-        <p>
+        <div class="mt-4">
             <a asp-controller="Utente" asp-action="Register" class="btn btn-primary btn-lg m-2">Registrati</a>
             <a asp-controller="Utente" asp-action="Login" class="btn btn-success btn-lg m-2">Accedi</a>
-        </p>
+        </div>
     }
     else
     {
-        <p class="mt-4">Benvenuto, <strong>@User.Identity.Name</strong>!</p>
+        <p class="mt-4">Benvenuto, <strong class="text-primary">@User.Identity.Name</strong>!</p>
     }
 </div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    
+    .banner-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .banner-img {
+        width: 100%;
+        height: auto;
+        max-height: 300px; /* Increased height */
+        object-fit: cover;
+    }
+
+    h1.display-4 {
+        color: #007bff;
+        font-family: 'Arial Black', sans-serif;
+    }
+
+    p.lead {
+        font-size: 1.25rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-lg {
+        padding: 0.75rem 1.25rem;
+        font-size: 1.25rem;
+    }
+</style>
