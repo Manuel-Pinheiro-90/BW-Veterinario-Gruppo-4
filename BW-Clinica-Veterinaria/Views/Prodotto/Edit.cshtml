@@ -9,61 +9,65 @@
 
 <h2>Edit Prodotto</h2>
 
-<form asp-action="Edit" method="post">
-    @Html.AntiForgeryToken()
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Nome" class="control-label"></label>
-        <input asp-for="Nome" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Tipo" class="control-label"></label>
-        <input asp-for="Tipo" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="IdDitta" class="control-label"></label>
-        <select asp-for="IdDitta" class="form-select input-FPA">
-            @foreach (var d in ditte)
-            {
-                if (d.IdDitta == Model.IdDitta)
-                {
-                    <option value="@d.IdDitta" selected>@d.Nome</option>
-                }
-                else
-                {
-                    <option value="@d.IdDitta">@d.Nome</option>
-                }
-            }
-        </select>
-        <span asp-validation-for="IdDitta" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="IdCassetto" class="control-label"></label>
-        <select asp-for="IdCassetto" class="form-select input-FPA">
-            @foreach (var c in cassetti)
-            {
-                <option value="@c.IdCassetto">Armadietto @c.NumeroArmadietto, cassetto @c.NumeroCassetto</option>
-                if (c.IdCassetto == Model.IdDitta)
-                {
-                    <option value="@c.IdCassetto" selected>Armadietto @c.NumeroArmadietto, cassetto @c.NumeroCassetto</option>
-                }
-                else
-                {
-                    <option value="@c.IdCassetto">Armadietto @c.NumeroArmadietto, cassetto @c.NumeroCassetto</option>
-                }
-            }
-        </select>
-        <span asp-validation-for="IdCassetto" class="text-danger"></span>
-    </div>
-    
-    <input type="hidden" asp-for="IdProdotto" />
-    <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </div>
-</form>
+<div class="row">
+    <div class="col-md-4">
+        <form class="form-FPA" asp-action="Edit">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p class="title-FPA">Modifica Prodotto</p>
+            <label class="label-FPA">
+                <span>Nome</span>
+                <input asp-for="Nome" class="input-FPA" type="text" placeholder="" required="">
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </label>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+            <label class="label-FPA">
+                <span>Tipo</span>
+                <input asp-for="Tipo" class="input-FPA" type="text" placeholder="" required="">
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </label>
+
+            <label class="label-FPA">
+                <label asp-for="IdDitta" class="control-label"></label>
+                <select asp-for="IdDitta" class="form-select input-FPA">
+                    @foreach (var d in ditte)
+                    {
+                        if (d.IdDitta == Model.IdDitta)
+                        {
+                            <option value="@d.IdDitta" selected>@d.Nome</option>
+                        }
+                        else
+                        {
+                            <option value="@d.IdDitta">@d.Nome</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="IdDitta" class="text-danger"></span>
+            </label>
+
+
+            <label class="label-FPA">
+                <label asp-for="IdCassetto" class="control-label"></label>
+                <select asp-for="IdCassetto" class="form-select input-FPA">
+                    @foreach (var c in cassetti)
+                    {
+                        if (c.IdCassetto == Model.IdDitta)
+                        {
+                            <option value="@c.IdCassetto" selected>Armadietto @c.NumeroArmadietto, cassetto @c.NumeroCassetto</option>
+                        }
+                        else
+                        {
+                            <option value="@c.IdCassetto">Armadietto @c.NumeroArmadietto, cassetto @c.NumeroCassetto</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="IdCassetto" class="text-danger"></span>
+            </label>
+            <input type="hidden" asp-for="IdProdotto" />
+            <input type="submit" value="Modifica" class="btn btn-primary submit-FPA fw-bold" />
+            <a asp-action="Index" class="btn btn-secondary fw-bold border-button">Torna alla home</a>
+        </form>
+    </div>
 </div>
 
 @section Scripts {

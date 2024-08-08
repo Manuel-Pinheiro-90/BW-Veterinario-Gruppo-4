@@ -1,191 +1,333 @@
 html {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
+  html {
+    font-size: 16px;
+  }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
 .footer {
-    background-color: #f8f9fa !important;
+    background-color: #15172b !important;
 }
 
 .margin-main {
-    margin-bottom: 150px
+  margin-bottom: 150px;
 }
 
 .img-ricovero {
-    width: 5em;
+  width: 5em;
 }
 
 .bi {
-    color: #007bff;
-    font-size: 1.8em;
+  color: #f7f8fa;
+  font-size: 1.8em;
 }
 
 .logo-img {
-    height: 40px;
-    margin-right: 10px;
+  height: 40px;
+  margin-right: 10px;
 }
 
+/* Form Prodotti */
+
+.form-FPA {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.title-FPA {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #00bfff;
+}
+
+.title-FPA::before {
+  width: 18px;
+  height: 18px;
+}
+
+.title-FPA::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.title-FPA::before,
+.title-FPA::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #00bfff;
+}
+
+.message-FPA,
+.signin-FPA {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signin-FPA {
+  text-align: center;
+}
+
+.signin-FPA a:hover {
+  text-decoration: underline royalblue;
+}
+
+.signin-FPA a {
+  color: #00bfff;
+}
+
+.flex-FPA {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form-FPA .label-FPA {
+  position: relative;
+}
+
+.form-FPA .label-FPA .input-FPA {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form-FPA .label-FPA .input-FPA + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form-FPA .label-FPA .input-FPA:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.form-FPA .label-FPA .input-FPA:focus + span,
+.form-FPA .label-FPA .input-FPA:valid + span {
+  color: #00bfff;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input-FPA {
+  font-size: medium;
+}
+
+.submit-FPA {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: 0.3s ease;
+  background-color: #00bfff;
+}
+
+.submit-FPA:hover {
+  background-color: #00bfff96;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
 /*-----------------------------------------------FORM DI LOGIN E REGISTER-----------------------------------------*/
 
 .form {
-    background-color: #15172b;
-    border-radius: 20px;
-    box-sizing: border-box;
-    padding: 20px;
-    width: 320px;
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 320px;
 }
 
 .title {
-    color: #eee;
-    font-family: sans-serif;
-    font-size: 36px;
-    font-weight: 600;
-    margin-top: 30px;
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
 }
 
 .subtitle {
-    color: #eee;
-    font-family: sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 10px;
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
 }
 
 .input-container {
-    height: 50px;
-    position: relative;
-    width: 100%;
+  height: 50px;
+  position: relative;
+  width: 100%;
 }
 
 .ic1 {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .ic2 {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .input {
-    background-color: #303245;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    font-size: 18px;
-    height: 100%;
-    outline: 0;
-    padding: 4px 20px 0;
-    width: 100%;
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
 }
 
 .cut {
-    background-color: #15172b;
-    border-radius: 10px;
-    height: 20px;
-    left: 20px;
-    position: absolute;
-    top: -20px;
-    transform: translateY(0);
-    transition: transform 200ms;
-    width: 76px;
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
 }
 
 .cut-short {
-    width: 50px;
+  width: 50px;
 }
 
 .iLabel {
-    color: #65657b;
-    font-family: sans-serif;
-    left: 20px;
-    line-height: 14px;
-    pointer-events: none;
-    position: absolute;
-    transform-origin: 0 50%;
-    transition: transform 200ms, color 200ms;
-    top: 20px;
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
 }
 
 .input:focus ~ .cut {
-    transform: translateY(8px);
+  transform: translateY(8px);
 }
 
 .input:focus ~ .iLabel {
-    transform: translateY(-30px) translateX(10px) scale(0.75);
+  transform: translateY(-30px) translateX(10px) scale(0.75);
 }
 
 .input:not(:focus) ~ .iLabel {
-    color: #808097;
+  color: #808097;
 }
 
 .input:focus ~ .iLabel {
-    color: #dc2f55;
+  color: #dc2f55;
 }
 
 .submit {
-    background-color: #08d;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    cursor: pointer;
-    font-size: 18px;
-    height: 50px;
-    margin-top: 38px;
-    text-align: center;
-    width: 100%;
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  text-align: center;
+  width: 100%;
 }
 
-    .submit:active {
-        background-color: #06b;
-    }
+.submit:active {
+  background-color: #06b;
+}
 
 .select-label {
-    transform: translateY(-30px) translateX(10px) scale(0.75);
-    margin-bottom: 10px;
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+  margin-bottom: 10px;
 }
 
 /*-------------------------------------------------NAVBAR----------------------------------------*/
 
 .navbar-custom {
-    background-color: #15172b;
+  background-color: #15172b;
 }
 
-    .navbar-custom .navbar-brand,
-    .navbar-custom .nav-link,
-    .navbar-custom .nav-item .btn-link {
-        color: #eee;
-    }
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link,
+.navbar-custom .nav-item .btn-link {
+  color: #eee;
+}
 
-        .navbar-custom .nav-link:hover,
-        .navbar-custom .nav-item .btn-link:hover {
-            color: #dc2f55;
-        }
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-item .btn-link:hover {
+  color: #dc2f55;
+}
 
-        .navbar-custom .navbar-brand img {
-            height: 40px;
-            margin-right: 10px;
-        }
+.navbar-custom .navbar-brand img {
+  height: 40px;
+  margin-right: 10px;
+}
 
 a:hover {
-    color: #dc2f55;
+  color: #dc2f55;
 }
-
