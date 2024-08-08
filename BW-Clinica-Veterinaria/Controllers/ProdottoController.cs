@@ -69,6 +69,10 @@ namespace BW_Clinica_Veterinaria.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Ditte = await _dittaService.GetAllDitte();
+            ViewBag.Cassetti = await _prodottoService.GetCassettiAsync();
+
             return View(prodotto);
         }
 

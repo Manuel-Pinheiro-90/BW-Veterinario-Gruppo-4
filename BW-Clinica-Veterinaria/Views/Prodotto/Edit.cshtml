@@ -1,12 +1,16 @@
-﻿@model BW_Clinica_Veterinaria.Models.Entity.Prodotto
+﻿@using BW_Clinica_Veterinaria.Models.Entity
+@model Prodotto
 
 @{
     ViewData["Title"] = "Edit Prodotto";
+    List<Cassetto> cassetti = ViewBag.Cassetti;
+    List<Ditta> ditte = ViewBag.Ditte;
 }
 
 <h2>Edit Prodotto</h2>
 
 <form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Nome" class="control-label"></label>
@@ -18,11 +22,38 @@
     </div>
     <div class="form-group">
         <label asp-for="IdDitta" class="control-label"></label>
-        <input asp-for="IdDitta" class="form-control" />
+        <select asp-for="IdDitta" class="form-select input-FPA">
+            @foreach (var d in ditte)
+            {
+                if (d.IdDitta == Model.IdDitta)
+                {
+                    <option value="@d.IdDitta" selected>@d.Nome</option>
+                }
+                else
+                {
+                    <option value="@d.IdDitta">@d.Nome</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="IdDitta" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="IdCassetto" class="control-label"></label>
-        <input asp-for="IdCassetto" class="form-control" />
+        <select asp-for="IdCassetto" class="form-select input-FPA">
+            @foreach (var c in cassetti)
+            {
+                <option value="@c.IdCassetto">Armadietto @c.NumeroArmadietto, cassetto @c.NumeroCassetto</option>
+                if (c.IdCassetto == Model.IdDitta)
+                {
+                    <option value="@c.IdCassetto" selected>Armadietto @c.NumeroArmadietto, cassetto @c.NumeroCassetto</option>
+                }
+                else
+                {
+                    <option value="@c.IdCassetto">Armadietto @c.NumeroArmadietto, cassetto @c.NumeroCassetto</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="IdCassetto" class="text-danger"></span>
     </div>
     
     <input type="hidden" asp-for="IdProdotto" />
