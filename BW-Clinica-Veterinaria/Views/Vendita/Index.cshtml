@@ -64,4 +64,8 @@
     <script>
         document.getElementById('resetFilters').addEventListener('click', function () {
             document.getElementById('data').value = '';
-     
+            document.getElementById('codiceFiscale').value = '';
+            location.href = '@Url.Action("Index")';
+        });
+    </script>
+}
