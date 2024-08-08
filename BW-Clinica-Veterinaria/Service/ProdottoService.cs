@@ -86,5 +86,11 @@ namespace BW_Clinica_Veterinaria.Service
                 .Where(p => p.Nome.Contains(nome))
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Cassetto>> GetCassettiAsync()
+        {
+            var cassetti = await _context.Cassetti.ToListAsync();
+            return cassetti;
+        }
     }
 }
