@@ -51,12 +51,14 @@ namespace BW_Clinica_Veterinaria.Controllers
             }
             return View(model);
         }
-
-
-      
-
+        // ///////////////////////////////////////////////////////////////////////////////////////////
         public async Task<IActionResult> Edit(int id)
         {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
             var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
             if (prodotto == null)
             {
@@ -67,34 +69,32 @@ namespace BW_Clinica_Veterinaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Prodotto prodotto)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProdotto,IdDitta,Nome,Tipo,IdCassetto,Utilizzi")] Prodotto prodotto)
         {
             if (id != prodotto.IdProdotto)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    await _prodottoService.UpdateProdottoAsync(prodotto);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (await _prodottoService.GetProdottoByIdAsync(id) == null)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _prodottoService.UpdateProdottoAsync(prodotto);
                 return RedirectToAction(nameof(Index));
             }
-            return View(prodotto);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (await _prodottoService.GetProdottoByIdAsync(id) == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
+
+        // /////////////////////////////////////////////////////////////////////////////////////////////////
 
         public async Task<IActionResult> Delete(int id)
         {
