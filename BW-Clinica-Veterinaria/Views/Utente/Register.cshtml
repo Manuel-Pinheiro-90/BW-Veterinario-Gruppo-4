@@ -6,31 +6,36 @@
     List<Ruolo> ruoli = ViewBag.Ruoli;
 }
 
-<h2>Register</h2>
-
-<form asp-action="Register" method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Email" class="control-label"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
+<div class="d-flex justify-content-center align-items-start vh-100" style="margin-top: 50px;">
+    <div class="form">
+        <div class="title">Registrati</div>
+        <div class="subtitle">Crea il tuo account</div>
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-container ic1">
+                <input asp-for="Email" class="input" />
+                <div class="cut"></div>
+                <label asp-for="Email" class="iLabel">Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="input-container ic2">
+                <input asp-for="Password" type="password" class="input" />
+                <div class="cut"></div>
+                <label asp-for="Password" class="iLabel">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="input-container ic2">
+                <select asp-for="Ruolo" class="input">
+                    @foreach (var r in ruoli)
+                    {
+                        <option value="@r.Nome">@r.Nome</option>
+                    }
+                </select>
+                <div class="cut cut-short"></div>
+                <label asp-for="Ruolo" class="iLabel select-label">Ruolo</label>
+                <span asp-validation-for="Ruolo" class="text-danger"></span>
+            </div>
+            <button type="submit" class="submit">Registrami</button>
+        </form>
     </div>
-    <div class="form-group">
-        <label asp-for="Password" class="control-label"></label>
-        <input asp-for="Password" type="password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Ruolo" class="control-label"></label>
-        <select asp-for="Ruolo" class="form-select input-FPA">
-            @foreach (var r in ruoli)
-            {
-                <option value="@r.Nome">@r.Nome</option>
-            }
-        </select>
-        <span asp-validation-for="Ruolo" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Register" class="btn btn-primary" />
-    </div>
-</form>
+</div>
