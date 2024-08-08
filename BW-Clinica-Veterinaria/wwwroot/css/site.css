@@ -8,7 +8,11 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -22,25 +26,25 @@ body {
 }
 
 .footer {
-    background-color: #f8f9fa !important;
+  background-color: #f8f9fa !important;
 }
 
 .margin-main {
-    margin-bottom: 150px
+  margin-bottom: 150px;
 }
 
 .img-ricovero {
-    width: 5em;
+  width: 5em;
 }
 
 .bi {
-    color: #007bff;
-    font-size: 1.8em;
+  color: #007bff;
+  font-size: 1.8em;
 }
 
 .logo-img {
-    height: 40px;
-    margin-right: 10px;
+  height: 40px;
+  margin-right: 10px;
 }
 
 /* Form Prodotti */
@@ -59,14 +63,14 @@ body {
 }
 
 .title-FPA {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-    color: #00bfff;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #00bfff;
 }
 
 .title-FPA::before {
@@ -93,12 +97,12 @@ body {
 
 .message-FPA,
 .signin-FPA {
-    font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.7);
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .signin-FPA {
-    text-align: center;
+  text-align: center;
 }
 
 .signin-FPA a:hover {
@@ -110,13 +114,13 @@ body {
 }
 
 .flex-FPA {
-    display: flex;
-    width: 100%;
-    gap: 6px;
+  display: flex;
+  width: 100%;
+  gap: 6px;
 }
 
 .form-FPA .label-FPA {
-    position: relative;
+  position: relative;
 }
 
 .form-FPA .label-FPA .input-FPA {
@@ -153,18 +157,18 @@ body {
 }
 
 .input-FPA {
-    font-size: medium;
+  font-size: medium;
 }
 
 .submit-FPA {
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
-    transform: .3s ease;
-    background-color: #00bfff;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: 0.3s ease;
+  background-color: #00bfff;
 }
 
 .submit-FPA:hover {
@@ -181,4 +185,149 @@ body {
     transform: scale(1.8);
     opacity: 0;
   }
+}
+/*-----------------------------------------------FORM DI LOGIN E REGISTER-----------------------------------------*/
+
+.form {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 320px;
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
+}
+
+.cut-short {
+  width: 50px;
+}
+
+.iLabel {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus ~ .cut {
+  transform: translateY(8px);
+}
+
+.input:focus ~ .iLabel {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:focus) ~ .iLabel {
+  color: #808097;
+}
+
+.input:focus ~ .iLabel {
+  color: #dc2f55;
+}
+
+.submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #06b;
+}
+
+.select-label {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+  margin-bottom: 10px;
+}
+
+/*-------------------------------------------------NAVBAR----------------------------------------*/
+
+.navbar-custom {
+  background-color: #15172b;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link,
+.navbar-custom .nav-item .btn-link {
+  color: #eee;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-item .btn-link:hover {
+  color: #dc2f55;
+}
+
+.navbar-custom .navbar-brand img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+a:hover {
+  color: #dc2f55;
 }

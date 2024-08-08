@@ -4,21 +4,25 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Login</h2>
-
-<form asp-action="Login" method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Email" class="control-label"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
+<div class="d-flex justify-content-center align-items-start vh-100" style="margin-top: 50px;">
+    <div class="form">
+        <div class="title">Accedi</div>
+        <div class="subtitle">Benvenuto di nuovo</div>
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-container ic1">
+                <input asp-for="Email" class="input" />
+                <div class="cut"></div>
+                <label asp-for="Email" class="iLabel">Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="input-container ic2">
+                <input asp-for="Password" type="password" class="input" />
+                <div class="cut"></div>
+                <label asp-for="Password" class="iLabel">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit" class="submit">Accedi</button>
+        </form>
     </div>
-    <div class="form-group">
-        <label asp-for="Password" class="control-label"></label>
-        <input asp-for="Password" type="password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Login" class="btn btn-primary" />
-    </div>
-</form>
+</div>

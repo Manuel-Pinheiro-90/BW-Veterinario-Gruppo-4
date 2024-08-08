@@ -79,11 +79,8 @@
                 <td>
                     <a asp-action="Details" asp-controller="Animal" asp-route-id="@item.IdAnimale" class="btn btn-info">Dettagli</a>
                     <a asp-action="Visite" asp-controller="Animal" asp-route-id="@item.IdAnimale" class="btn btn-secondary">Cronistoria Visite</a>
-
+                    <a asp-action="AggiungiVisita" asp-controller="Animal" asp-route-idAnimale="@item.IdAnimale" class="btn btn-primary">Aggiungi Visitra</a>
                 </td>
-
-
-
 
             </tr>
         }
