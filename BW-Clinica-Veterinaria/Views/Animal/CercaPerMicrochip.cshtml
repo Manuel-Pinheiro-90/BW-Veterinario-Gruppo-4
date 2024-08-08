@@ -24,17 +24,22 @@
                 var microchip = $("#microchip").val();
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("CercaPerMicrochip", "Animal")',
+                    url: '@Url.Action("CercaPerMicrochipJson", "Animal")',
                     data: { microchip: microchip },
                     success: function (response) {
+                        console.log(response)
                         if (response.success) {
+                            var ricovero = response.data;
+                            var animal = ricovero.animale;
                             var animalDetails = "<dl class='row'>" +
-                                "<dt class='col-sm-2'>Nome</dt><dd class='col-sm-10'>" + response.data.name + "</dd>" +
-                                "<dt class='col-sm-2'>Tipologia</dt><dd class='col-sm-10'>" + response.data.tipologia + "</dd>" +
-                                "<dt class='col-sm-2'>Colore</dt><dd class='col-sm-10'>" + response.data.colore + "</dd>" +
-                                "<dt class='col-sm-2'>Microchip</dt><dd class='col-sm-10'>" + response.data.microChipCodice + "</dd>" +
-                                "<dt class='col-sm-2'>Data di Nascita</dt><dd class='col-sm-10'>" + new Date(response.data.dataNascita).toLocaleDateString() + "</dd>" +
-                                "<dt class='col-sm-2'>Proprietario</dt><dd class='col-sm-10'>" + (response.data.proprietario ? response.data.proprietario.nome : 'N/A') + "</dd>" +
+                                "<dt class='col-sm-2'>Foto</dt><dd class='col-sm-10'>" + `<img src="${ricovero.foto}" alt="foto-${animal.name}" class="img-ricovero" />` + "</dd>" +
+                                "<dt class='col-sm-2'>Nome</dt><dd class='col-sm-10'>" + animal.name + "</dd>" +
+                                "<dt class='col-sm-2'>Tipologia</dt><dd class='col-sm-10'>" + animal.tipologia + "</dd>" +
+                                "<dt class='col-sm-2'>Colore</dt><dd class='col-sm-10'>" + animal.colore + "</dd>" +
+                                "<dt class='col-sm-2'>Microchip</dt><dd class='col-sm-10'>" + animal.microChipCodice + "</dd>" +
+                                "<dt class='col-sm-2'>Data di Nascita</dt><dd class='col-sm-10'>" + new Date(animal.dataNascita).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' }) + "</dd>" +
+                                "<dt class='col-sm-2'>Data Inizio Ricovero</dt><dd class='col-sm-10'>" + new Date(ricovero.dataRicovero).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' }) + "</dd>" +
+                                "<dt class='col-sm-2'>Data Fine Ricovero</dt><dd class='col-sm-10'>" + (ricovero.dataFineRicovero ? new Date(ricovero.dataFineRicovero).toLocaleDateString() : 'In corso') + "</dd>" +
                                 "</dl>";
                             $("#result").html(animalDetails);
                         } else {

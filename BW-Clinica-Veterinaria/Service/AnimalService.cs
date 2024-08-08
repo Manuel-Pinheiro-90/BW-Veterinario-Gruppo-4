@@ -27,12 +27,14 @@ namespace BW_Clinica_Veterinaria.Service
             return list;
         }
 
-        public async Task<Animale> GetByMicroChip(string microchip)
+        public async Task<Ricovero> GetRicoveroByMicroChip(string microchip)
         {
-            var animale = await _ctx.Animali.SingleOrDefaultAsync(a => a.MicroChipCodice == microchip);
-            return animale;
-        }
+            var ricovero = await _ctx.Ricoveri
+                .Include(r => r.Animale)
+                .SingleOrDefaultAsync(r => r.Animale.MicroChipCodice == microchip && r.DataFineRicovero == null);
 
+            return ricovero;
+        }
 
         ////////////////////////////////////////////////////////////
         public async Task<Animale> GetById(int id)

@@ -18,6 +18,7 @@ builder.Services
     .AddScoped<IRicoveroService, RicoveroService>()
     .AddScoped<IProdottoService, ProdottoService>()
     .AddScoped<IVenditaService, VenditaService>()
+    .AddScoped<IDittaService, DittaService>()
     .AddScoped<IPasswordEncoder, PasswordEncoder>()
     ;
 
