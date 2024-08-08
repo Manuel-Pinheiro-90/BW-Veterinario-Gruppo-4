@@ -1,11 +1,13 @@
 ﻿using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BW_Clinica_Veterinaria.Controllers
 {
-   
+    [Authorize(Roles = "Veterinario")]
+
     public class ProprietariController : Controller
     {
         private readonly IProprietarioService _proprietarioService;

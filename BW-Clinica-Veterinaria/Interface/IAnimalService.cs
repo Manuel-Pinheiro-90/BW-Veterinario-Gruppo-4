@@ -6,7 +6,7 @@ namespace BW_Clinica_Veterinaria.Interface
     {
         public Task<Animale> AggiungiAnimale(Animale animale);
         public Task<IEnumerable<Animale>> GetAll();
-        public Task<Animale> GetByMicroChip(string microchip);
+        public Task<Ricovero> GetRicoveroByMicroChip(string microchip);
         Task<Animale> GetById(int id);
         Task<IEnumerable<Visita>> GetVisiteByAnimaleId(int idAnimale);
         Task<Visita> AggiungiVisita(Visita visita);
