@@ -31,7 +31,6 @@ namespace BW_Clinica_Veterinaria.Service
         {
             var ricovero = await _ctx.Ricoveri
                 .Include(r => r.Animale)
-                .ThenInclude(a => a.Proprietario)
                 .SingleOrDefaultAsync(r => r.Animale.MicroChipCodice == microchip && r.DataFineRicovero == null);
 
             return ricovero;
