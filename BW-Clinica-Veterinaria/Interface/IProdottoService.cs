@@ -7,8 +7,10 @@ namespace BW_Clinica_Veterinaria.Interface
     {
         Task<IEnumerable<Prodotto>> GetAllProdottiAsync();
         Task<Prodotto> GetProdottoByIdAsync(int id);
+
+        Task UpdateProdottoAsync(Prodotto prodotto);
         Task<Prodotto> AddProdottoAsync(ProdottoDto prodotto, List<int> utilizziId);
-        Task<Prodotto> UpdateProdottoAsync(Prodotto prodotto);
+       
 
         Task<List<Utilizzo>> GetUtilizziAsync();
         Task<bool> DeleteProdottoAsync(int id);

@@ -27,8 +27,9 @@ namespace BW_Clinica_Veterinaria.Service
 
         public async Task<Prodotto> GetProdottoByIdAsync(int id)
         {
-            return await _context.Prodotti.Include(p => p.Ditta).Include(p => p.Cassetto).Include(p => p.Utilizzi)
-                .FirstOrDefaultAsync(p => p.IdProdotto == id);
+            return await _context.Prodotti
+                .Include(p => p.Utilizzi)
+                .SingleOrDefaultAsync(p => p.IdProdotto == id);
         }
 
         public async Task<List<Utilizzo>> GetUtilizziAsync()
@@ -57,14 +58,15 @@ namespace BW_Clinica_Veterinaria.Service
             return prodottoFinale;
         }
 
-        public async Task<Prodotto> UpdateProdottoAsync(Prodotto prodotto)
+
+
+        public async Task UpdateProdottoAsync(Prodotto prodotto)
         {
             _context.Entry(prodotto).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return prodotto;
         }
 
-       
+
         public async Task<bool> DeleteProdottoAsync(int id)
         {
             var prodotto = await _context.Prodotti.FindAsync(id);
