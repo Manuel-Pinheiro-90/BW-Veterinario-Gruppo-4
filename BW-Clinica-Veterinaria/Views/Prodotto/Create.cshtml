@@ -5,11 +5,11 @@
 @{
     ViewData["Title"] = "Crea Nuovo Prodotto";
     List<Utilizzo> utilizzi = ViewBag.Utilizzi;
-    int len = utilizzi?.Count ?? 0;
+    List<Cassetto> cassetti = ViewBag.Cassetti;
+    List<Ditta> ditte = ViewBag.Ditte;
 }
 
 <h1>Crea Nuovo Prodotto</h1>
-<p>Numero utilizzi: @len</p>
 
 <h4>Prodotto</h4>
 <hr />
@@ -30,12 +30,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdDitta" class="control-label"></label>
-                <input asp-for="IdDitta" class="form-control" />
+                <select asp-for="IdDitta" class="form-select input-FPA">
+                    @foreach (var d in ditte)
+                    {
+                        <option value="@d.IdDitta">@d.Nome</option>
+                    }
+                </select>
                 <span asp-validation-for="IdDitta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdCassetto" class="control-label"></label>
-                <input asp-for="IdCassetto" class="form-control" />
+                <select asp-for="IdCassetto" class="form-select input-FPA">
+                    @foreach (var c in cassetti)
+                    {
+                        <option value="@c.IdCassetto">Armadietto @c.NumeroArmadietto, cassetto @c.NumeroCassetto</option>
+                    }
+                </select>
                 <span asp-validation-for="IdCassetto" class="text-danger"></span>
             </div>
             <div class="form-group container-fluid">

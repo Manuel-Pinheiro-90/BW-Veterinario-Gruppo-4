@@ -15,5 +15,6 @@ namespace BW_Clinica_Veterinaria.Interface
         Task<List<Utilizzo>> GetUtilizziAsync();
         Task<bool> DeleteProdottoAsync(int id);
         Task<IEnumerable<Prodotto>> GetNomeProdotto(string nome);
+        public Task<IEnumerable<Cassetto>> GetCassettiAsync();
     }
 }
