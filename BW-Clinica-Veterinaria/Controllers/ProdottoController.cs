@@ -53,7 +53,8 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
 
 
-      
+
+
 
         public async Task<IActionResult> Edit(int id)
         {
@@ -93,9 +94,10 @@ namespace BW_Clinica_Veterinaria.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            // Return view with current data if model state is invalid
             return View(prodotto);
         }
-
         public async Task<IActionResult> Delete(int id)
         {
             var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
