@@ -104,6 +104,12 @@ namespace BW_Clinica_Veterinaria.Controllers
             return View(ricoveri);
         }
 
+        public async Task<IActionResult> ModificaRicovero(int id)
+        {
+            await _ricoveroService.EditRicovero(id);
+            return RedirectToAction(nameof(RicoveriMensili));
+        }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         [Authorize(Roles = "Veterinario")]

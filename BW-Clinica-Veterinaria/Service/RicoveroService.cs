@@ -54,5 +54,28 @@ namespace BW_Clinica_Veterinaria.Service
             var list = await _ctx.Ricoveri.Where(r => r.DataFineRicovero == null || (r.DataFineRicovero.Value.Year == currentYear && r.DataFineRicovero.Value.Month == currentMonth)).Include(r => r.Animale).ToListAsync();
             return list;
         }
+
+        public async Task<IEnumerable<Ricovero>> GetRicoveriAttivi()
+        {
+            var list = await _ctx.Ricoveri.Where(r => r.DataFineRicovero == null).Include(r => r.Animale).ToListAsync();
+            return list;
+        }
+
+        public async Task<Ricovero> GetById(int id)
+        {
+            var ricovero = await _ctx.Ricoveri.Where(r => r.IdRicovero == id).SingleOrDefaultAsync();
+            return ricovero;
+        }
+
+        public async Task<Ricovero> EditRicovero(int id)
+        {
+            var ricovero = await GetById(id);
+            ricovero.DataFineRicovero = DateTime.Now;
+
+            _ctx.Ricoveri.Update(ricovero);
+            await _ctx.SaveChangesAsync();
+
+            return ricovero;
+        }
     }
 }
