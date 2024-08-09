@@ -4,44 +4,43 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Modifica Proprietario</h1>
 
-<h4>Proprietario</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form class="form-FPA" asp-action="Edit">
             @Html.AntiForgeryToken()
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CodiceFiscale" class="control-label"></label>
-                <input asp-for="CodiceFiscale" class="form-control" />
+            <p class="title-FPA">Aggiungi Proprietario</p>
+            <label class="label-FPA">
+                <span>CodiceFiscale</span>
+                <input asp-for="CodiceFiscale" class="input-FPA" type="text" placeholder="" required="">
                 <span asp-validation-for="CodiceFiscale" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
+            </label>
+
+            <label class="label-FPA">
+                <span>Nome</span>
+                <input asp-for="Nome" class="input-FPA" type="text" placeholder="" required="">
                 <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cognome" class="control-label"></label>
-                <input asp-for="Cognome" class="form-control" />
+            </label>
+
+            <label class="label-FPA">
+                <span>Cognome</span>
+                <input asp-for="Cognome" class="input-FPA" type="text" placeholder="" required="">
                 <span asp-validation-for="Cognome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NumeroTelefono" class="control-label"></label>
-                <input asp-for="NumeroTelefono" class="form-control" />
+            </label>
+
+            <label class="label-FPA">
+                <span>NumeroTelefono</span>
+                <input asp-for="NumeroTelefono" class="input-FPA" type="text" placeholder="" required="">
                 <span asp-validation-for="NumeroTelefono" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-vet btn-vet-modifica" />
-            </div>
+            </label>
+
+            <input type="submit" value="Modifica" class="btn btn-primary submit-FPA fw-bold" />
+            <a asp-action="Index" class="btn btn-secondary fw-bold border-button">Torna alla home</a>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" class="btn btn-vet btn-vet-elimina">Back to List</a>
 </div>
 
 @section Scripts {
