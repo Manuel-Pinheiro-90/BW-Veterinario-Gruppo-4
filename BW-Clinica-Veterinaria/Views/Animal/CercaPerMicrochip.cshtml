@@ -2,16 +2,18 @@
     ViewData["Title"] = "Cerca Animale per Microchip";
 }
 
-<h2>Cerca Animale per Microchip</h2>
+<h2 class="title text-center mb-4">Cerca Animale per Microchip</h2>
 
-<form id="searchForm">
-
-    <div class="form-group">
-        <label for="microchip">Codice Microchip</label>
-        <input type="text" class="form-control" id="microchip" name="microchip" />
+<form id="searchForm" class="form mx-auto mt-4">
+    <div class="input-container ic1">
+        <input type="text" class="input" id="microchip" name="microchip" placeholder=" " />
+        <div class="cut"></div>
+        <label for="microchip" class="iLabel">Codice Microchip</label>
     </div>
-    <button type="submit" class="btn btn-primary" id="searchButton">Cerca</button>
+
+    <button type="submit" class="submit" id="searchButton">Cerca</button>
 </form>
+
 
 <div id="result"></div>
 
@@ -32,26 +34,144 @@
                         if (response.success) {
                             var ricovero = response.data;
                             var animal = ricovero.animale;
-                            var animalDetails = "<dl class='row'>" +
-                                "<dt class='col-sm-2'>Foto</dt><dd class='col-sm-10'>" + `<img src="${ricovero.foto}" alt="foto-${animal.name}" class="img-ricovero" />` + "</dd>" +
-                                "<dt class='col-sm-2'>Nome</dt><dd class='col-sm-10'>" + animal.name + "</dd>" +
-                                "<dt class='col-sm-2'>Tipologia</dt><dd class='col-sm-10'>" + animal.tipologia + "</dd>" +
-                                "<dt class='col-sm-2'>Colore</dt><dd class='col-sm-10'>" + animal.colore + "</dd>" +
-                                "<dt class='col-sm-2'>Microchip</dt><dd class='col-sm-10'>" + animal.microChipCodice + "</dd>" +
-                                "<dt class='col-sm-2'>Data di Nascita</dt><dd class='col-sm-10'>" + new Date(animal.dataNascita).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' }) + "</dd>" +
-                                "<dt class='col-sm-2'>Data Inizio Ricovero</dt><dd class='col-sm-10'>" + new Date(ricovero.dataRicovero).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' }) + "</dd>" +
-                                "<dt class='col-sm-2'>Data Fine Ricovero</dt><dd class='col-sm-10'>" + (ricovero.dataFineRicovero ? new Date(ricovero.dataFineRicovero).toLocaleDateString() : 'In corso') + "</dd>" +
-                                "</dl>";
-                            $("#result").html(animalDetails);
+                            var animalDetails = `
+                                        <div class="card mb-4" style="background-color: #303245; color: #eee;">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 text-center my-auto">
+                                                    <img src="${ricovero.foto}" alt="foto-${animal.name}" class="img-fluid rounded-start" style="max-height: 200px; max-width: 100%;">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">${animal.name}</h5>
+                                                        <p class="card-text"><strong>Tipologia:</strong> ${animal.tipologia}</p>
+                                                        <p class="card-text"><strong>Colore:</strong> ${animal.colore}</p>
+                                                        <p class="card-text"><strong>Microchip:</strong> ${animal.microChipCodice}</p>
+                                                        <p class="card-text"><strong>Data di Nascita:</strong> ${new Date(animal.dataNascita).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' })}</p>
+                                                        <p class="card-text"><strong>Data Inizio Ricovero:</strong> ${new Date(ricovero.dataRicovero).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' })}</p>
+                                                        <p class="card-text"><strong>Data Fine Ricovero:</strong> ${ricovero.dataFineRicovero ? new Date(ricovero.dataFineRicovero).toLocaleDateString() : 'In corso'}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`;
+                            $("#result").html(animalDetails).addClass("mt-4"); // Aggiunge margine superiore
                         } else {
-                            $("#result").html("<p class='text-danger'>" + response.message + "</p>");
+                            $("#result").html("<p class='text-danger'>" + response.message + "</p>").addClass("mt-4");
                         }
                     },
                     error: function () {
-                        $("#result").html("<p class='text-danger'>Si è verificato un errore durante la ricerca.</p>");
+                        $("#result").html("<p class='text-danger'>Si è verificato un errore durante la ricerca.</p>").addClass("mt-4");
                     }
                 });
             });
         });
     </script>
+
+
+
+    <style>
+        .form {
+            background-color: #15172b;
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding: 20px;
+            width: 320px;
+        }
+
+        .title {
+            color: #15172b;
+            font-family: sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            margin-top: 30px;
+        }
+
+        .subtitle {
+            color: #eee;
+            font-family: sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 40px;
+        }
+
+        .input-container {
+            height: 50px;
+            position: relative;
+            width: 100%;
+        }
+
+        .ic1 {
+            margin-top: 40px;
+        }
+
+        .ic2 {
+            margin-top: 30px;
+        }
+
+        .input {
+            background-color: #303245;
+            border-radius: 12px;
+            border: 0;
+            box-sizing: border-box;
+            color: #eee;
+            font-size: 18px;
+            height: 100%;
+            outline: 0;
+            padding: 4px 20px 0;
+            width: 100%;
+        }
+
+        .cut {
+            background-color: #15172b;
+            border-radius: 10px;
+            height: 20px;
+            left: 20px;
+            position: absolute;
+            top: -20px;
+            transform: translateY(0);
+            transition: transform 200ms;
+            width: 76px;
+        }
+
+        .cut-short {
+            width: 50px;
+        }
+
+        .iLabel {
+            color: #65657b;
+            font-family: sans-serif;
+            left: 20px;
+            line-height: 14px;
+            pointer-events: none;
+            position: absolute;
+            transform-origin: 0 50%;
+            transition: transform 200ms, color 200ms;
+            top: -20px;
+        }
+
+        .input:not(:focus) ~ .iLabel {
+            color: #808097;
+        }
+
+        .input:focus ~ .iLabel {
+            color: #dc2f55;
+        }
+
+        .submit {
+            background-color: #08d;
+            border-radius: 12px;
+            border: 0;
+            box-sizing: border-box;
+            color: #eee;
+            cursor: pointer;
+            font-size: 18px;
+            height: 50px;
+            margin-top: 38px;
+            text-align: center;
+            width: 100%;
+        }
+
+            .submit:active {
+                background-color: #06b;
+            }
+    </style>
 }

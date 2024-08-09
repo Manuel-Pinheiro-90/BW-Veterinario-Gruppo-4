@@ -4,7 +4,7 @@
     ViewData["Title"] = "Prodotti";
 }
 
-<h1>Prodotti</h1>
+<h1 class="text-center">Prodotti</h1>
 
 <div class="row mb-3">
     <div class="col-md-6">
@@ -22,56 +22,38 @@
     </div>
 </div>
 
-
 <p>
-    <a asp-action="Create" class="btn btn-primary">Crea Nuovo Prodotto</a>
+    <a asp-action="Create" class="btn btn-success mb-3">Crea Nuovo Prodotto</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ditta.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cassetto.NumeroArmadietto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cassetto.NumeroCassetto)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ditta.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cassetto.NumeroArmadietto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cassetto.NumeroCassetto)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdProdotto" class="btn btn-warning">Modifica</a>
-                    <a asp-action="Details" asp-route-id="@item.IdProdotto" class="btn btn-info">Dettagli</a>
-                    <a asp-action="Delete" asp-route-id="@item.IdProdotto" class="btn btn-danger">Elimina</a>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                <th>@Html.DisplayNameFor(model => model.Ditta.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Cassetto.NumeroArmadietto)</th>
+                <th>@Html.DisplayNameFor(model => model.Cassetto.NumeroCassetto)</th>
+                <th class="text-center">Azioni</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Ditta.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Cassetto.NumeroArmadietto)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Cassetto.NumeroCassetto)</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.IdProdotto" class="btn btn-sm btn-warning">Modifica</a>
+                        <a asp-action="Details" asp-route-id="@item.IdProdotto" class="btn btn-sm btn-info">Dettagli</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdProdotto" class="btn btn-sm btn-danger">Elimina</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -18,43 +18,45 @@
     var totale = ViewBag.Totale;
 }
 
-<h1>Visualizza rimborso ricoveri</h1>
+<h1 class="text-center">Visualizza rimborso ricoveri</h1>
 
 <p>Il rimborso viene calcolato sul numero di giorni che ogni animale passa in clinica durante il mese (tariffa giornaliera 5 &euro;)</p>
-<p id="rimborso-ricoveri">@totale &euro;</p>
+<p id="rimborso-ricoveri" class="lead text-success">@totale &euro;</p>
 
+<h6 class="mt-4">Ricoveri attivi</h6>
 
-
-<h6>Ricoveri attivi</h6>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id Ricovero</th>
-            <th>Data di ricovero</th>
-            <th>Data di fine ricovero</th>
-            <th>Foto</th>
-            <th>Nome</th>
-            <th>Specie</th>
-            <th>Colore</th>
-            <th>Codice microchip</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var r in ricoveriAttivi)
-        {
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
             <tr>
-                <th>@r.IdRicovero</th>
-                <th>@r.DataRicovero</th>
-                <th>@(r.DataFineRicovero.HasValue ? r.DataFineRicovero.Value.ToString("dd/MM/yyyy") : "Ricovero Attivo")</th>
-                <th><img src="@r.Foto" alt="img ricovero" class="img-ricovero" /></th>
-                <th>@r.Animale.Name</th>
-                <th>@r.Animale.Tipologia</th>
-                <th>@r.Animale.Colore</th>
-                <th>@r.Animale.MicroChipCodice</th>
-                <th><a asp-action="ModificaRicovero" asp-route-id="@r.IdRicovero" class="btn btn-danger">Termina Ricovero</a></th>
+                <th>Id Ricovero</th>
+                <th>Data di ricovero</th>
+                <th>Data di fine ricovero</th>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Specie</th>
+                <th>Colore</th>
+                <th>Codice microchip</th>
+                <th class="text-center">Azioni</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var r in ricoveriAttivi)
+            {
+                <tr>
+                    <td>@r.IdRicovero</td>
+                    <td>@r.DataRicovero.ToString("dd/MM/yyyy")</td>
+                    <td>@(r.DataFineRicovero.HasValue ? r.DataFineRicovero.Value.ToString("dd/MM/yyyy") : "Ricovero Attivo")</td>
+                    <td><img src="@r.Foto" alt="img ricovero" class="img-ricovero img-thumbnail" /></td>
+                    <td>@r.Animale.Name</td>
+                    <td>@r.Animale.Tipologia</td>
+                    <td>@r.Animale.Colore</td>
+                    <td>@r.Animale.MicroChipCodice</td>
+                    <td class="text-center">
+                        <a asp-action="ModificaRicovero" asp-route-id="@r.IdRicovero" class="btn btn-danger btn-sm">Termina Ricovero</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

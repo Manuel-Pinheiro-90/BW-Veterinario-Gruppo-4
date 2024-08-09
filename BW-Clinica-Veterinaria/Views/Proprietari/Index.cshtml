@@ -4,52 +4,38 @@
     ViewData["Title"] = "Lista Proprietari";
 }
 
-<h1>Lista Proprietari</h1>
+<h1 class="text-center">Lista Proprietari</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Crea Nuovo</a>
+    <a asp-action="Create" class="btn btn-success mb-3">Crea Nuovo</a>
 </p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CodiceFiscale)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cognome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumeroTelefono)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CodiceFiscale)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cognome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumeroTelefono)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.CodiceFiscale" class="btn btn-secondary">Modifica</a>
-                    <a asp-action="Details" asp-route-id="@item.CodiceFiscale" class="btn btn-info">Dettagli/Visite</a>
-                    <a asp-action="Delete" asp-route-id="@item.CodiceFiscale" class="btn btn-danger">Elimina</a>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.CodiceFiscale)</th>
+                <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Cognome)</th>
+                <th>@Html.DisplayNameFor(model => model.NumeroTelefono)</th>
+                <th class="text-center">Azioni</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.CodiceFiscale)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Cognome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NumeroTelefono)</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.CodiceFiscale" class="btn btn-sm btn-secondary">Modifica</a>
+                        <a asp-action="Details" asp-route-id="@item.CodiceFiscale" class="btn btn-sm btn-info">Dettagli/Visite</a>
+                        <a asp-action="Delete" asp-route-id="@item.CodiceFiscale" class="btn btn-sm btn-danger">Elimina</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
