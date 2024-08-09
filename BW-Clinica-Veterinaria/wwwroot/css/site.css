@@ -26,7 +26,7 @@ body {
 }
 
 .footer {
-    background-color: #15172b !important;
+  background-color: #15172b !important;
 }
 
 .margin-main {
@@ -47,46 +47,80 @@ body {
   margin-right: 10px;
 }
 
-/* Bottone Vet (Blu) */
+/* Bottoni */
 
 .btn-vet {
-    min-width: 6.5em !important;
-    height: 2.3em !important;
-    margin: 0.5em !important;
-    background-color: #15172b !important;
-    color: #f7f8fa !important;
-    border: none !important;
-    border-radius: 0.625em !important;
-    font-size: 20px !important;
-    font-weight: bold !important;
-    cursor: pointer !important;
-    position: relative !important;
-    z-index: 1 !important;
-    overflow: hidden !important;
+  min-width: 6.5em !important;
+  height: 2.3em !important;
+  margin: 0.5em !important;
+
+  border: none !important;
+  border-radius: 0.625em !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
 }
 
-    .btn-vet:hover {
-        color: #15172b !important;
-    }
+.btn-vet-modifica {
+  background-color: #adb0d7 !important;
+  color: #f7f8fa;
+}
 
-    .btn-vet:after {
-        content: "";
-        background-color: #f7f8fa !important;
-        position: absolute !important;
-        z-index: -1 !important;
-        left: -20% !important;
-        right: -20% !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        transform: skewX(-45deg) scale(0, 1) !important;
-        transition: all 0.5s !important;
-    }
+.btn-vet-dettagli {
+  background-color: #434989 !important;
+  color: #f7f8fa;
+}
 
-    .btn-vet:hover:after {
-        transform: skewX(-45deg) scale(1, 1) !important;
-        -webkit-transition: all 0.5s !important;
-        transition: all 0.5s !important;
-    }
+.btn-vet-elimina {
+  background-color: #15172b !important;
+  color: #f7f8fa;
+}
+
+.btn-vet-modifica:hover {
+  color: #adb0d7 !important;
+}
+
+.btn-vet-dettagli:hover {
+  color: #434989 !important;
+}
+
+.btn-vet-elimina:hover {
+  color: #15172b !important;
+}
+
+.btn-vet:after {
+  content: "";
+
+  position: absolute !important;
+  z-index: -1 !important;
+  left: -20% !important;
+  right: -20% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  transform: skewX(-45deg) scale(0, 1) !important;
+  transition: all 0.5s !important;
+}
+
+.btn-vet-modifica:after {
+  background-color: #f7f8fa !important;
+}
+
+.btn-vet-dettagli:after {
+  background-color: #f7f8fa !important;
+}
+
+.btn-vet-elimina:after {
+  background-color: #f7f8fa !important;
+}
+
+.btn-vet:hover:after {
+  transform: skewX(-45deg) scale(1, 1) !important;
+  -webkit-transition: all 0.5s !important;
+  transition: all 0.5s !important;
+}
 
 /* Form Prodotti */
 
@@ -238,11 +272,11 @@ body {
 }
 
 .title {
-    color: #15172b;
-    font-family: sans-serif;
-    font-size: 36px;
-    font-weight: 600;
-    margin-top: 30px;
+  color: #15172b;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
 }
 
 .title.login {
@@ -258,8 +292,8 @@ body {
 }
 
 .subtitle.login {
-    color: #eee;
-      margin-top: 10px;
+  color: #eee;
+  margin-top: 10px;
 }
 
 .input-container {
@@ -343,8 +377,6 @@ body {
   background-color: #06b;
 }
 
-
-
 /*-------------------------------------------------NAVBAR----------------------------------------*/
 
 .navbar-custom {
@@ -371,87 +403,84 @@ a:hover {
   color: #dc2f55;
 }
 
-
-
 /*--------------------------------------IMMAGINI-----------------------------------------*/
 
-
 .image-container {
-    position: fixed;
-    bottom: 35px; /* Altezza esatta sopra il footer (modifica in base all'altezza del footer) */
-    left: 92%;
-    transform: translateX(-50%);
-    z-index: 1000; /* Assicurati che sia sopra il footer */
+  position: fixed;
+  bottom: 35px; /* Altezza esatta sopra il footer (modifica in base all'altezza del footer) */
+  left: 92%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Assicurati che sia sopra il footer */
 }
 
 .image-above-footer {
-    width: 300px; /* Regola la larghezza dell'immagine */
-    height: auto;
+  width: 300px; /* Regola la larghezza dell'immagine */
+  height: auto;
 }
 
 .footer {
-    z-index: 1;
-    padding-top: 50px; /* Spazio extra per l'immagine sopra */
+  z-index: 1;
+  padding-top: 50px; /* Spazio extra per l'immagine sopra */
 }
 
 .header-container {
-    position: relative;
-    padding: 20px;
-    background-color: #f8f9fa; /* Colore di sfondo dell'header */
+  position: relative;
+  padding: 20px;
+  background-color: #f8f9fa; /* Colore di sfondo dell'header */
 }
 
 .header-content {
-    position: relative;
-    padding-bottom: 0px; /* Spazio extra per evitare che il contenuto si sovrapponga all'immagine */
+  position: relative;
+  padding-bottom: 0px; /* Spazio extra per evitare che il contenuto si sovrapponga all'immagine */
 }
 
 .image-bottom-header {
-    position: absolute;
-    bottom: 0;
-    left: 90%;
-    transform: translateX(-50%);
-    width: 50px; /* Regola la larghezza dell'immagine */
-    height: auto;
-    z-index: 1; /* Assicurati che l'immagine sia sopra altri contenuti, se necessario */
+  position: absolute;
+  bottom: 0;
+  left: 90%;
+  transform: translateX(-50%);
+  width: 50px; /* Regola la larghezza dell'immagine */
+  height: auto;
+  z-index: 1; /* Assicurati che l'immagine sia sopra altri contenuti, se necessario */
 }
 
 /*----------------------------------------------VENDITA/ -----------------------------------------------------*/
 
 .title {
-    color: #15172b; /* Colore scuro */
-    font-family: sans-serif;
-    font-size: 36px;
-    font-weight: 600;
-    margin-top: 30px;
-    text-align: center;
+  color: #15172b; /* Colore scuro */
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+  text-align: center;
 }
 
 .subtitle {
-    color: #15172b; /* Colore scuro */
-    font-family: sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 10px;
+  color: #15172b; /* Colore scuro */
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
 }
 
 /*--------------------------------------Tabella proprietari prova-----------------------------------------*/
 .table {
-    border-radius: 5px;
-    overflow: hidden;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-    .table thead th {
-        background-color: #343a40;
-        color: white;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
+.table thead th {
+  background-color: #343a40;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 
-    .table tbody tr {
-        transition: background-color 0.2s ease;
-    }
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
 
-        .table tbody tr:hover {
-            background-color: #f1f1f1;
-        }
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
