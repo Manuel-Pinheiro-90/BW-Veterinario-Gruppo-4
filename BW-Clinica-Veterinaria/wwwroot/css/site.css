@@ -331,3 +331,47 @@ body {
 a:hover {
   color: #dc2f55;
 }
+
+
+
+/*--------------------------------------IMMAGINI-----------------------------------------*/
+
+
+.image-container {
+    position: fixed;
+    bottom: 35px; /* Altezza esatta sopra il footer (modifica in base all'altezza del footer) */
+    left: 92%;
+    transform: translateX(-50%);
+    z-index: 1000; /* Assicurati che sia sopra il footer */
+}
+
+.image-above-footer {
+    width: 300px; /* Regola la larghezza dell'immagine */
+    height: auto;
+}
+
+.footer {
+    z-index: 1;
+    padding-top: 50px; /* Spazio extra per l'immagine sopra */
+}
+
+.header-container {
+    position: relative;
+    padding: 20px;
+    background-color: #f8f9fa; /* Colore di sfondo dell'header */
+}
+
+.header-content {
+    position: relative;
+    padding-bottom: 0px; /* Spazio extra per evitare che il contenuto si sovrapponga all'immagine */
+}
+
+.image-bottom-header {
+    position: absolute;
+    bottom: 0;
+    left: 90%;
+    transform: translateX(-50%);
+    width: 50px; /* Regola la larghezza dell'immagine */
+    height: auto;
+    z-index: 1; /* Assicurati che l'immagine sia sopra altri contenuti, se necessario */
+}
