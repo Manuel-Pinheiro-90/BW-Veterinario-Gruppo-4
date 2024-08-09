@@ -4,12 +4,14 @@
     ViewData["Title"] = "Ricerca Vendite per Codice Fiscale";
 }
 
-<h1>Ricerca Vendite per Codice Fiscale</h1>
+<h1 class="title text-center mb-4">Ricerca Vendite per Codice Fiscale</h1>
 
-<form asp-action="RicercaPerCodiceFiscale" method="post">
-    <div class="form-group">
-        <label for="codiceFiscale">Codice Fiscale</label>
-        <input type="text" class="form-control" id="codiceFiscale" name="codiceFiscale" />
+<form asp-action="RicercaPerCodiceFiscale" method="post" class="form mx-auto mt-4">
+    <div class="input-container ic1">
+        <input type="text" class="input" id="codiceFiscale" name="codiceFiscale" placeholder=" " />
+        <div class="cut"></div>
+        <label for="codiceFiscale" class="iLabel">Codice Fiscale</label>
     </div>
-    <button type="submit" class="btn btn-primary">Cerca</button>
+    <button type="submit" class="submit">Cerca</button>
 </form>
+

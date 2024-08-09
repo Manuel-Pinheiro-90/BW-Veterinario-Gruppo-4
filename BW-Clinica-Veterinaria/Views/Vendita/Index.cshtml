@@ -4,61 +4,65 @@
     ViewData["Title"] = "Vendite";
 }
 
-<h1 class="my-4">Vendite</h1>
+<h1 class="title text-center mb-4">Vendite</h1>
 
-<div class="mb-3">
-    <a asp-action="Create" class="btn btn-primary">Crea Nuova Vendita</a>
-    <button id="resetFilters" class="btn btn-secondary">Azzera Filtri</button>
+<div class="mb-3 d-flex justify-content-start gap-2">
+    <a asp-action="Create" class="btn btn-primary rounded-pill">Crea Nuova Vendita</a>
+    <button id="resetFilters" class="btn btn-secondary rounded-pill">Azzera Filtri</button>
 </div>
 
 <div class="row mb-4">
     <div class="col-md-6">
-        <h4>Ricerca per Data</h4>
-        <form asp-action="RicercaPerData" method="post" class="form-inline">
-            <div class="form-group mr-2">
-                <label for="data" class="mr-2">Data</label>
-                <input type="date" class="form-control" id="data" name="data" />
+        <h4 class="subtitle">Ricerca per Data</h4>
+        <form asp-action="RicercaPerData" method="post" class="form">
+            <div class="input-container ic1">
+                <input type="date" class="input" id="data" name="data" placeholder=" " />
+                <div class="cut"></div>
+                <label for="data" class="iLabel">Data</label>
             </div>
-            <button type="submit" class="btn btn-primary">Cerca</button>
+            <button type="submit" class="submit mt-4 rounded-pill">Cerca</button>
         </form>
     </div>
     <div class="col-md-6">
-        <h4>Ricerca per Codice Fiscale</h4>
-        <form asp-action="RicercaPerCodiceFiscale" method="post" class="form-inline">
-            <div class="form-group mr-2">
-                <label for="codiceFiscale" class="mr-2">Codice Fiscale</label>
-                <input type="text" class="form-control" id="codiceFiscale" name="codiceFiscale" />
+        <h4 class="subtitle">Ricerca per Codice Fiscale</h4>
+        <form asp-action="RicercaPerCodiceFiscale" method="post" class="form">
+            <div class="input-container ic1">
+                <input type="text" class="input" id="codiceFiscale" name="codiceFiscale" placeholder=" " />
+                <div class="cut"></div>
+                <label for="codiceFiscale" class="iLabel">Codice Fiscale</label>
             </div>
-            <button type="submit" class="btn btn-primary">Cerca</button>
+            <button type="submit" class="submit mt-4 rounded-pill">Cerca</button>
         </form>
     </div>
 </div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.CodiceFiscaleCliente)</th>
-            <th>@Html.DisplayNameFor(model => model.Prodotto.Nome)</th>
-            <th>@Html.DisplayNameFor(model => model.Data)</th>
-            <th>@Html.DisplayNameFor(model => model.Ricetta)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle">
+        <thead class="table-dark">
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.CodiceFiscaleCliente)</td>
-                <td>@Html.DisplayFor(modelItem => item.Prodotto.Nome)</td>
-                <td>@Html.DisplayFor(modelItem => item.Data)</td>
-                <td>@Html.DisplayFor(modelItem => item.Ricetta)</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.IdVendita" class="btn btn-info">Dettagli</a>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.CodiceFiscaleCliente)</th>
+                <th>@Html.DisplayNameFor(model => model.Prodotto.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Data)</th>
+                <th>@Html.DisplayNameFor(model => model.Ricetta)</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.CodiceFiscaleCliente)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Prodotto.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Ricetta)</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.IdVendita" class="btn btn-info rounded-pill">Dettagli</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 @section Scripts {
     <script>
