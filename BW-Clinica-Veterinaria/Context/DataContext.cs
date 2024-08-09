@@ -107,6 +107,7 @@ namespace BW_Clinica_Veterinaria.Context
 
 
             //Popolazione prodotti
+            /* Lista Prodotti da eliminare/correggere, non popola la tabella associativa UtilizziProdotti
             modelBuilder.Entity<Prodotto>().HasData(
             new Prodotto { IdProdotto = 1, Nome = "Next Dry Food Adult Dog", IdDitta = 1, Tipo = "Alimentare", IdCassetto = 3 },
             new Prodotto { IdProdotto = 2, Nome = "Next Wet Food Kitten", IdDitta = 1, Tipo = "Alimentare", IdCassetto = 5 },
@@ -163,7 +164,7 @@ namespace BW_Clinica_Veterinaria.Context
             new Prodotto { IdProdotto = 53, Nome = "Frontline Spray", IdDitta = 11, Tipo = "Farmaceutico", IdCassetto = 13 },
             new Prodotto { IdProdotto = 54, Nome = "Frontline Spot On Cat", IdDitta = 11, Tipo = "Farmaceutico", IdCassetto = 10 },
             new Prodotto { IdProdotto = 55, Nome = "Frontline Spot On Dog", IdDitta = 11, Tipo = "Farmaceutico", IdCassetto = 3 }
-        );
+        );*/
 
 
     }
