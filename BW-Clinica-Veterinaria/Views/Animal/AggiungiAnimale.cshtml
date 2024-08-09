@@ -5,58 +5,72 @@
     List<BW_Clinica_Veterinaria.Models.Entity.Proprietario> proprietari = ViewBag.Proprietari;
 }
 
-<h1>AggiungiAnimale</h1>
+<h1 class="title text-center mb-4">Aggiungi Animale</h1>
 
-<h4>Animale</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AggiungiAnimale">
-            @Html.AntiForgeryToken()
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tipologia" class="control-label"></label>
-                <input asp-for="Tipologia" class="form-control" />
-                <span asp-validation-for="Tipologia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Colore" class="control-label"></label>
-                <input asp-for="Colore" class="form-control" />
-                <span asp-validation-for="Colore" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MicroChipCodice" class="control-label"></label>
-                <input asp-for="MicroChipCodice" class="form-control" />
-                <span asp-validation-for="MicroChipCodice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataNascita" class="control-label"></label>
-                <input asp-for="DataNascita" class="form-control" type="date" />
-                <span asp-validation-for="DataNascita" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CodiceFiscaleProprietario" class="control-label"></label>
-                <select asp-for="CodiceFiscaleProprietario" class="form-select input-FPA">
-                    @foreach (var p in proprietari)
-                    {
-                        <option value="@p.CodiceFiscale">@p.Nome @p.Cognome</option>
-                    }
-                </select>
-                <span asp-validation-for="CodiceFiscaleProprietario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Aggiungi Animale" class="btn btn-primary" />
-                <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Torna alla Homepage</a>
-            </div>
-        </form>
+<form asp-action="AggiungiAnimale" class="form mx-auto" style="width: 100%; max-width: 600px;">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="input-container ic1">
+        <input asp-for="Name" class="input" placeholder=" " />
+        <div class="cut"></div>
+        <label asp-for="Name" class="iLabel">Nome</label>
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
-</div>
+
+    <div class="input-container ic2">
+        <input asp-for="Tipologia" class="input" placeholder=" " />
+        <div class="cut"></div>
+        <label asp-for="Tipologia" class="iLabel">Tipologia</label>
+        <span asp-validation-for="Tipologia" class="text-danger"></span>
+    </div>
+
+    <div class="input-container ic2">
+        <input asp-for="Colore" class="input" placeholder=" " />
+        <div class="cut"></div>
+        <label asp-for="Colore" class="iLabel">Colore</label>
+        <span asp-validation-for="Colore" class="text-danger"></span>
+    </div>
+
+    <div class="input-container ic2">
+        <input asp-for="MicroChipCodice" class="input" placeholder=" " />
+        <div class="cut"></div>
+        <label asp-for="MicroChipCodice" class="iLabel">Microchip</label>
+        <span asp-validation-for="MicroChipCodice" class="text-danger"></span>
+    </div>
+
+    <div class="input-container ic2">
+        <input asp-for="DataNascita" class="input" type="date" placeholder=" " />
+        <div class="cut"></div>
+        <label asp-for="DataNascita" class="iLabel">Data di Nascita</label>
+        <span asp-validation-for="DataNascita" class="text-danger"></span>
+    </div>
+
+    <div class="input-container ic2">
+        <select asp-for="CodiceFiscaleProprietario" class="input">
+            @foreach (var p in proprietari)
+            {
+                <option value="@p.CodiceFiscale">@p.Nome @p.Cognome</option>
+            }
+        </select>
+        <div class="cut"></div>
+        <label asp-for="CodiceFiscaleProprietario" class="iLabel">Proprietario</label>
+        <span asp-validation-for="CodiceFiscaleProprietario" class="text-danger"></span>
+    </div>
+
+    <div class="d-grid gap-1">
+        <button type="submit" class="submit btn btn-primary" style="text-decoration: none;">Aggiungi Animale</button>
+        <a asp-controller="Home" asp-action="Index"
+           class="submit btn btn-secondary"
+           style="text-decoration: none;">
+            Torna alla Homepage
+        </a>
+    </div>
+
+</form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
