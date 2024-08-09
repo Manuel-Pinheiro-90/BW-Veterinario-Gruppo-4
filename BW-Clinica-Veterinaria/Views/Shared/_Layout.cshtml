@@ -7,71 +7,100 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        /* Stile personalizzato per la navbar */
+        .navbar-custom {
+            background-color: #15172b;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link,
+        .navbar-custom .nav-item .btn-link {
+            color: #eee;
+        }
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-item .btn-link:hover {
+            color: #dc2f55;
+        }
+        .navbar-custom .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .footer {
+            background-color: #15172b;
+            color: #eee;
+        }
+        .footer .text-body-secondary {
+            color: #808097;
+        }
+        .footer .text-body-secondary:hover {
+            color: #dc2f55;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/image/logo2.jpg" alt="Logo" class="logo-img" >
-                    Clinica Veterinaria Benessere Pet
-                </a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <form asp-controller="Utente" asp-action="Logout" method="post" class="form-inline">
-                                    <button type="submit" class="btn btn-link nav-link" style="cursor:pointer;">Logout</button>
-                                </form>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Utente" asp-action="Register">Register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Utente" asp-action="Login">Login</a>
-                            </li>
-                        }
-                         @if (User.IsInRole("Farmacista"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Vendita" asp-action="Index">Vendite</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Prodotto" asp-action="Index">Prodotto</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Ditta" asp-action="Index">Ditte</a>
-                            </li>
-                        }
-
-                         @if (User.IsInRole("Veterinario"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Proprietari" asp-action="Index">Proprietari</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Animal" asp-action="AggiungiAnimale">AggiungiAnimale</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Animal" asp-action="CercaPerMicrochip">RicercaMicrochip</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Animal" asp-action="AggiungiRicovero">AggiungiRicovero</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Animal" asp-action="RicoveriMensili">RicoveriMensili</a>
-                            </li>
-                        }
+   <header>
+    <nav class="navbar navbar-expand-sm navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/image/logo2.jpg" alt="Logo" class="logo-img">
+                Clinica Veterinaria Benessere Pet
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-5">
+                    @if (User.Identity.IsAuthenticated)
+                    {
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Animal" asp-action="CercaPerMicrochip">CercaPerMicrochip</a>
+                            <form asp-controller="Utente" asp-action="Logout" method="post" class="form-inline">
+                                <button type="submit" class="btn btn-link nav-link" style="cursor:pointer;">Logout</button>
+                            </form>
                         </li>
-                    </ul>
-                </div>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Utente" asp-action="Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Utente" asp-action="Login">Login</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Farmacista"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Vendita" asp-action="Index">Vendite</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Prodotto" asp-action="Index">Prodotto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Ditta" asp-action="Index">Ditte</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Veterinario"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Proprietari" asp-action="Index">Proprietari</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Animal" asp-action="AggiungiAnimale">AggiungiAnimale</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Animal" asp-action="CercaPerMicrochip">RicercaMicrochip</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Animal" asp-action="AggiungiRicovero">AggiungiRicovero</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Animal" asp-action="RicoveriMensili">RicoveriMensili</a>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Animal" asp-action="CercaPerMicrochip">CercaPerMicrochip</a>
+                    </li>
+                </ul>
             </div>
         </nav>
         <div class="header-content">
@@ -91,9 +120,8 @@
     <footer class="d-flex flex-wrap justify-content-around align-items-center p-3 mt-1 border-top footer text-muted fixed-bottom bottom-0">
         <div class="col-md-4 d-flex align-items-center">
             <img src="~/image/logo2.jpg" alt="Logo" class="logo-img" />
-            <span class="mb-3 mb-md-0 text-body-secondary">© @DateTime.Now.Year  BW Clinica Veterinaria</span>
+            <span class="mb-3 mb-md-0 text-light">© @DateTime.Now.Year BW Clinica Veterinaria</span>
         </div>
-
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
             <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-twitter"></i></a></li>
             <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-instagram"></i></a></li>
