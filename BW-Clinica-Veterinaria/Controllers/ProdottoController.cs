@@ -29,7 +29,7 @@ namespace BW_Clinica_Veterinaria.Controllers
         }
         public async Task<IActionResult> Details(int id)
         {
-            var prodotto = await _prodottoService.GetProdottoByIdAsync(id);
+            var prodotto = await _prodottoService.GetDettaglioProdotto(id);
             if (prodotto == null)
             {
                 return NotFound();
