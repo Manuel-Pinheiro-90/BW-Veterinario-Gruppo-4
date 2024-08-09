@@ -26,7 +26,7 @@ body {
 }
 
 .footer {
-    background-color: #15172b !important;
+  background-color: #15172b !important;
 }
 
 .margin-main {
@@ -47,81 +47,80 @@ body {
   margin-right: 10px;
 }
 
-
 /* Bottoni */
 
 .btn-vet {
-    min-width: 6.5em !important;
-    height: 2.3em !important;
-    margin: 0.5em !important;
-    
-    border: none !important;
-    border-radius: 0.625em !important;
-    font-size: 20px !important;
-    font-weight: bold !important;
-    cursor: pointer !important;
-    position: relative !important;
-    z-index: 1 !important;
-    overflow: hidden !important;
+  min-width: 6.5em !important;
+  height: 2.3em !important;
+  margin: 0.5em !important;
+
+  border: none !important;
+  border-radius: 0.625em !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
 }
 
 .btn-vet-modifica {
-    background-color: #adb0d7 !important;
-    color: #f7f8fa ;
+  background-color: #adb0d7 !important;
+  color: #f7f8fa;
 }
 
 .btn-vet-dettagli {
-    background-color: #434989 !important;
-    color: #f7f8fa ;
+  background-color: #434989 !important;
+  color: #f7f8fa;
 }
 
 .btn-vet-elimina {
-    background-color: #15172b !important;
-    color: #f7f8fa ;
+  background-color: #15172b !important;
+  color: #f7f8fa;
 }
 
 .btn-vet-modifica:hover {
-    color: #adb0d7 !important;
+  color: #adb0d7 !important;
 }
 
 .btn-vet-dettagli:hover {
-    color: #434989 !important;
+  color: #434989 !important;
 }
 
 .btn-vet-elimina:hover {
-    color: #15172b !important;
+  color: #15172b !important;
 }
 
-    .btn-vet:after {
-        content: "";
-        
-        position: absolute !important;
-        z-index: -1 !important;
-        left: -20% !important;
-        right: -20% !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        transform: skewX(-45deg) scale(0, 1) !important;
-        transition: all 0.5s !important;
-    }
+.btn-vet:after {
+  content: "";
+
+  position: absolute !important;
+  z-index: -1 !important;
+  left: -20% !important;
+  right: -20% !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  transform: skewX(-45deg) scale(0, 1) !important;
+  transition: all 0.5s !important;
+}
 
 .btn-vet-modifica:after {
-    background-color: #f7f8fa !important;
+  background-color: #f7f8fa !important;
 }
 
 .btn-vet-dettagli:after {
-    background-color: #f7f8fa !important;
+  background-color: #f7f8fa !important;
 }
 
 .btn-vet-elimina:after {
-    background-color: #f7f8fa !important;
+  background-color: #f7f8fa !important;
 }
 
-    .btn-vet:hover:after {
-        transform: skewX(-45deg) scale(1, 1) !important;
-        -webkit-transition: all 0.5s !important;
-        transition: all 0.5s !important;
-    }
+.btn-vet:hover:after {
+  transform: skewX(-45deg) scale(1, 1) !important;
+  -webkit-transition: all 0.5s !important;
+  transition: all 0.5s !important;
+}
 
 /* Form Prodotti */
 
@@ -146,7 +145,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 30px;
-  color: #00bfff;
+  color: #575eac;
 }
 
 .title-FPA::before {
@@ -168,7 +167,7 @@ body {
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: #00bfff;
+  background-color: #575eac;
 }
 
 .message-FPA,
@@ -186,7 +185,7 @@ body {
 }
 
 .signin-FPA a {
-  color: #00bfff;
+  color: #575eac;
 }
 
 .flex-FPA {
@@ -226,7 +225,7 @@ body {
 
 .form-FPA .label-FPA .input-FPA:focus + span,
 .form-FPA .label-FPA .input-FPA:valid + span {
-  color: #00bfff;
+  color: #575eac;
   top: 0px;
   font-size: 0.7em;
   font-weight: 600;
@@ -244,11 +243,11 @@ body {
   color: #fff;
   font-size: 16px;
   transform: 0.3s ease;
-  background-color: #00bfff;
+  background-color: #575eac;
 }
 
 .submit-FPA:hover {
-  background-color: #00bfff96;
+  background-color: #575eac96;
 }
 
 @keyframes pulse {
@@ -369,8 +368,6 @@ body {
   background-color: #06b;
 }
 
-
-
 /*-------------------------------------------------NAVBAR----------------------------------------*/
 
 .navbar-custom {
@@ -397,46 +394,191 @@ a:hover {
   color: #dc2f55;
 }
 
-
-
 /*--------------------------------------IMMAGINI-----------------------------------------*/
 
-
 .image-container {
-    position: fixed;
-    bottom: 35px; /* Altezza esatta sopra il footer (modifica in base all'altezza del footer) */
-    left: 92%;
-    transform: translateX(-50%);
-    z-index: 1000; /* Assicurati che sia sopra il footer */
+  position: fixed;
+  bottom: 35px; /* Altezza esatta sopra il footer (modifica in base all'altezza del footer) */
+  left: 92%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Assicurati che sia sopra il footer */
 }
 
 .image-above-footer {
-    width: 300px; /* Regola la larghezza dell'immagine */
-    height: auto;
+  width: 300px; /* Regola la larghezza dell'immagine */
+  height: auto;
 }
 
 .footer {
-    z-index: 1;
-    padding-top: 50px; /* Spazio extra per l'immagine sopra */
+  z-index: 1;
+  padding-top: 50px; /* Spazio extra per l'immagine sopra */
 }
 
 .header-container {
-    position: relative;
-    padding: 20px;
-    background-color: #f8f9fa; /* Colore di sfondo dell'header */
+  position: relative;
+  padding: 20px;
+  background-color: #f8f9fa; /* Colore di sfondo dell'header */
 }
 
 .header-content {
-    position: relative;
-    padding-bottom: 0px; /* Spazio extra per evitare che il contenuto si sovrapponga all'immagine */
+  position: relative;
+  padding-bottom: 0px; /* Spazio extra per evitare che il contenuto si sovrapponga all'immagine */
 }
 
 .image-bottom-header {
-    position: absolute;
-    bottom: 0;
-    left: 90%;
-    transform: translateX(-50%);
-    width: 50px; /* Regola la larghezza dell'immagine */
-    height: auto;
-    z-index: 1; /* Assicurati che l'immagine sia sopra altri contenuti, se necessario */
+  position: absolute;
+  bottom: 0;
+  left: 90%;
+  transform: translateX(-50%);
+  width: 50px; /* Regola la larghezza dell'immagine */
+  height: auto;
+  z-index: 1; /* Assicurati che l'immagine sia sopra altri contenuti, se necessario */
+}
+
+/*--------------------------------------CERCA PER MICROCHIP-----------------------------------------*/
+
+.form {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 320px;
+}
+
+.title {
+  color: #15172b;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 40px;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
+}
+
+.cut-short {
+  width: 50px;
+}
+
+.iLabel {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: -20px;
+}
+
+.input:not(:focus) ~ .iLabel {
+  color: #808097;
+}
+
+.input:focus ~ .iLabel {
+  color: #dc2f55;
+}
+
+.submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #06b;
+}
+
+/*----------------------------------------------VENDITA/ -----------------------------------------------------*/
+
+.title {
+  color: #15172b; /* Colore scuro */
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.subtitle {
+  color: #15172b; /* Colore scuro */
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/*--------------------------------------Tabella proprietari prova-----------------------------------------*/
+.table {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.table thead th {
+  background-color: #343a40;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
 }

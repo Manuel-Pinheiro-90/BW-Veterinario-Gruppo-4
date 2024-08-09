@@ -5,9 +5,9 @@
     ViewData["Title"] = "Cronistoria Visite";
 }
 
-<h2>Cronistoria Visite per @animale.Name</h2>
+<h2 class="text-center">Cronistoria Visite per @animale.Name</h2>
 
-<div>
+<div class="mb-4">
     <h4>Dettagli Animale</h4>
     <hr />
     <dl class="row">
@@ -22,28 +22,31 @@
     </dl>
 </div>
 
-<h4>Visite</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Data</th>
-            <th>Esame</th>
-            <th>Cura Prescritta</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var visita in Model)
-        {
-            <tr>
-                <td>@visita.Data.ToString("dd/MM/yyyy")</td>
-                <td>@visita.Esame</td>
-                <td>@visita.CuraPrescritta</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<h4 class="mt-4">Visite</h4>
 
-<div>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Data</th>
+                <th>Esame</th>
+                <th>Cura Prescritta</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var visita in Model)
+            {
+                <tr>
+                    <td>@visita.Data.ToString("dd/MM/yyyy")</td>
+                    <td>@visita.Esame</td>
+                    <td>@visita.CuraPrescritta</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="mt-4">
     <a asp-controller="Proprietari" asp-action="Index" class="btn btn-secondary">Torna alla Lista Proprietari</a>
     <a asp-action="AggiungiVisita" asp-route-idAnimale="@animale.IdAnimale" class="btn btn-primary">Aggiungi Visita</a>
 </div>
