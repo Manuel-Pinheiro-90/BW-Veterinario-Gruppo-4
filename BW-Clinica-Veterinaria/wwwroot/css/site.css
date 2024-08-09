@@ -111,7 +111,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 30px;
-  color: #00bfff;
+  color: #575eac;
 }
 
 .title-FPA::before {
@@ -133,7 +133,7 @@ body {
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: #00bfff;
+  background-color: #575eac;
 }
 
 .message-FPA,
@@ -151,7 +151,7 @@ body {
 }
 
 .signin-FPA a {
-  color: #00bfff;
+  color: #575eac;
 }
 
 .flex-FPA {
@@ -191,7 +191,7 @@ body {
 
 .form-FPA .label-FPA .input-FPA:focus + span,
 .form-FPA .label-FPA .input-FPA:valid + span {
-  color: #00bfff;
+  color: #575eac;
   top: 0px;
   font-size: 0.7em;
   font-weight: 600;
@@ -209,11 +209,11 @@ body {
   color: #fff;
   font-size: 16px;
   transform: 0.3s ease;
-  background-color: #00bfff;
+  background-color: #575eac;
 }
 
 .submit-FPA:hover {
-  background-color: #00bfff96;
+  background-color: #575eac96;
 }
 
 @keyframes pulse {
