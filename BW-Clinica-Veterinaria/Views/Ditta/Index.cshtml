@@ -4,38 +4,34 @@
     ViewData["Title"] = "Ditte";
 }
 
-<h1>Ditte</h1>
+<h1 class="text-center">Ditte</h1>
 
 <p>
-    <a asp-action="Create">Aggiungi una nuova ditta</a>
+    <a asp-action="Create" class="btn btn-success mb-3">Aggiungi una nuova ditta</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Recapito)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Recapito)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdDitta" class="btn btn-warning">Modifica</a> |
-                <a asp-action="Details" asp-route-id="@item.IdDitta" class="btn btn-info">Dettagli</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdDitta" class="btn btn-danger">Elimina</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Recapito)</th>
+                <th class="text-center">Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Recapito)</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.IdDitta" class="btn btn-sm btn-warning">Modifica</a>
+                        <a asp-action="Details" asp-route-id="@item.IdDitta" class="btn btn-sm btn-info">Dettagli</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdDitta" class="btn btn-sm btn-danger">Elimina</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
