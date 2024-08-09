@@ -49,7 +49,7 @@ body {
 
 /* Bottoni */
 
-.btn-vet {
+.btn-vet, .btn-input {
   min-width: 6.5em !important;
   height: 2.3em !important;
   margin: 0.5em !important;
@@ -64,12 +64,12 @@ body {
   overflow: hidden !important;
 }
 
-.btn-vet-modifica {
+.btn-vet-modifica, .btn-input-modifica {
   background-color: #adb0d7 !important;
   color: #f7f8fa;
 }
 
-.btn-vet-dettagli {
+.btn-vet-dettagli, btn-input-dettagli {
   background-color: #434989 !important;
   color: #f7f8fa;
 }
@@ -83,8 +83,13 @@ body {
   color: #adb0d7 !important;
 }
 
-.btn-vet-dettagli:hover {
-  color: #434989 !important;
+btn-input-dettagli:hover {
+    color: #15172b !important;
+}
+
+
+.btn-vet-dettagli:hover, btn-input-dettagli:hover {
+    color: #434989 !important;
 }
 
 .btn-vet-elimina:hover {
