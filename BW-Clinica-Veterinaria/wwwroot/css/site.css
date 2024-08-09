@@ -69,26 +69,30 @@ body {
   color: #f7f8fa;
 }
 
-.btn-vet-dettagli, btn-input-dettagli {
+.btn-vet-dettagli, .btn-input-dettagli {
   background-color: #434989 !important;
   color: #f7f8fa;
 }
 
-.btn-vet-elimina {
+.btn-vet-elimina, .btn-input-elimina {
   background-color: #15172b !important;
   color: #f7f8fa;
 }
 
-.btn-vet-modifica:hover {
-  color: #adb0d7 !important;
-}
-
-btn-input-dettagli:hover {
+.btn-input-dettagli:hover {
     color: #15172b !important;
 }
 
+btn-input-elimina:hover {
+    color: #adb0d7 !important;
+}
 
-.btn-vet-dettagli:hover, btn-input-dettagli:hover {
+.btn-vet-modifica:hover {
+    color: #adb0d7 !important;
+}
+
+
+.btn-vet-dettagli:hover {
     color: #434989 !important;
 }
 
