@@ -11,7 +11,7 @@
         <form asp-action="GetNomeProdotto" method="get">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Cerca per nome..." name="nome" />
-                <button class="btn btn-primary me-3" type="submit">
+                <button class="btn btn-vet-dettagli me-3" type="submit">
                     <i class="fas fa-search"></i> Cerca
                 </button>
                 <a asp-action="Index" class="btn btn-secondary ml-2">
@@ -24,7 +24,7 @@
 
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Crea Nuovo Prodotto</a>
+    <a asp-action="Create" class="btn btn-vet-dettagli">Crea Nuovo Prodotto</a>
 </p>
 <table class="table">
     <thead>
@@ -67,9 +67,9 @@
                     @Html.DisplayFor(modelItem => item.Cassetto.NumeroCassetto)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdProdotto" class="btn btn-warning">Modifica</a>
-                    <a asp-action="Details" asp-route-id="@item.IdProdotto" class="btn btn-info">Dettagli</a>
-                    <a asp-action="Delete" asp-route-id="@item.IdProdotto" class="btn btn-danger">Elimina</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdProdotto" class="btn btn-vet btn-vet-modifica">Modifica</a>
+                    <a asp-action="Details" asp-route-id="@item.IdProdotto" class="btn btn-vet btn-vet-dettagli">Dettagli</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdProdotto" class="btn btn-vet btn-vet-elimina">Elimina</a>
                 </td>
             </tr>
         }
