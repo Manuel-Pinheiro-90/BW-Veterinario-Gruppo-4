@@ -7,7 +7,7 @@
 <h1 class="text-center">Ditte</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-success mb-3">Aggiungi una nuova ditta</a>
+    <a asp-action="Create" class="btn btn-vet btn-vet-dettagli mb-3">Aggiungi una nuova ditta</a>
 </p>
 
 <div class="table-responsive">
@@ -26,9 +26,9 @@
                     <td>@Html.DisplayFor(modelItem => item.Nome)</td>
                     <td>@Html.DisplayFor(modelItem => item.Recapito)</td>
                     <td class="text-center">
-                        <a asp-action="Edit" asp-route-id="@item.IdDitta" class="btn btn-sm btn-warning">Modifica</a>
-                        <a asp-action="Details" asp-route-id="@item.IdDitta" class="btn btn-sm btn-info">Dettagli</a>
-                        <a asp-action="Delete" asp-route-id="@item.IdDitta" class="btn btn-sm btn-danger">Elimina</a>
+                        <a asp-action="Edit" asp-route-id="@item.IdDitta" class="btn btn-vet btn-vet-modifica">Modifica</a>
+                        <a asp-action="Details" asp-route-id="@item.IdDitta" class="btn btn-vet btn-vet-dettagli">Dettagli</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdDitta" class="btn btn-vet btn-vet-elimina">Elimina</a>
                     </td>
                 </tr>
             }

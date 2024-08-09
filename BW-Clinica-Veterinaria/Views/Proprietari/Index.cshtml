@@ -7,7 +7,7 @@
 <h1 class="text-center">Lista Proprietari</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-success mb-3">Crea Nuovo</a>
+    <a asp-action="Create" class="btn btn-vet btn-vet-dettagli">Crea Nuovo</a>
 </p>
 
 <div class="table-responsive">
@@ -29,11 +29,11 @@
                     <td>@Html.DisplayFor(modelItem => item.Nome)</td>
                     <td>@Html.DisplayFor(modelItem => item.Cognome)</td>
                     <td>@Html.DisplayFor(modelItem => item.NumeroTelefono)</td>
-                    <td class="text-center">
-                        <a asp-action="Edit" asp-route-id="@item.CodiceFiscale" class="btn btn-sm btn-secondary">Modifica</a>
-                        <a asp-action="Details" asp-route-id="@item.CodiceFiscale" class="btn btn-sm btn-info">Dettagli/Visite</a>
-                        <a asp-action="Delete" asp-route-id="@item.CodiceFiscale" class="btn btn-sm btn-danger">Elimina</a>
-                    </td>
+                    <td>
+                    <a asp-action="Edit" asp-route-id="@item.CodiceFiscale" class="btn btn-vet btn-vet-modifica">Modifica</a>
+                    <a asp-action="Details" asp-route-id="@item.CodiceFiscale" class="btn btn-vet btn-vet-dettagli">Dettagli/Visite</a>
+                    <a asp-action="Delete" asp-route-id="@item.CodiceFiscale" class="btn btn-vet btn-vet-elimina">Elimina</a>
+                </td>
                 </tr>
             }
         </tbody>
