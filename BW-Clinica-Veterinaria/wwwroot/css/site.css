@@ -264,15 +264,7 @@ body {
   position: absolute;
   transform-origin: 0 50%;
   transition: transform 200ms, color 200ms;
-  top: 20px;
-}
-
-.input:focus ~ .cut {
-  transform: translateY(8px);
-}
-
-.input:focus ~ .iLabel {
-  transform: translateY(-30px) translateX(10px) scale(0.75);
+  top: -20px;
 }
 
 .input:not(:focus) ~ .iLabel {
@@ -301,10 +293,7 @@ body {
   background-color: #06b;
 }
 
-.select-label {
-  transform: translateY(-30px) translateX(10px) scale(0.75);
-  margin-bottom: 10px;
-}
+
 
 /*-------------------------------------------------NAVBAR----------------------------------------*/
 
