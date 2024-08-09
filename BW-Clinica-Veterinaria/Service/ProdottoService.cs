@@ -3,7 +3,6 @@ using BW_Clinica_Veterinaria.Interface;
 using BW_Clinica_Veterinaria.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using BW_Clinica_Veterinaria.Interface;
 using Microsoft.AspNetCore.Mvc;
 using BW_Clinica_Veterinaria.Dto;
 
@@ -16,10 +15,8 @@ namespace BW_Clinica_Veterinaria.Service
         public ProdottoService(DataContext context)
         {
             _context = context;
-
-
-
         }
+
         public async Task<IEnumerable<Prodotto>> GetAllProdottiAsync()
         {
             return await _context.Prodotti.Include(p => p.Ditta).Include(p => p.Cassetto).ToListAsync();
@@ -27,9 +24,20 @@ namespace BW_Clinica_Veterinaria.Service
 
         public async Task<Prodotto> GetProdottoByIdAsync(int id)
         {
-            return await _context.Prodotti
+            var prodotto = await _context.Prodotti
                 .Include(p => p.Utilizzi)
                 .SingleOrDefaultAsync(p => p.IdProdotto == id);
+            return prodotto;
+        }
+
+        public async Task<Prodotto> GetDettaglioProdotto(int id)
+        {
+            var prodotto = await _context.Prodotti
+                .Include(p => p.Utilizzi)
+                .Include(p => p.Cassetto)
+                .Include(p => p.Ditta)
+                .SingleOrDefaultAsync(p => p.IdProdotto == id);
+            return prodotto;
         }
 
         public async Task<List<Utilizzo>> GetUtilizziAsync()
