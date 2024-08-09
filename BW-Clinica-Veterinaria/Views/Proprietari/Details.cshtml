@@ -77,9 +77,9 @@
                     @Html.DisplayFor(modelItem => item.DataNascita)
                 </td>
                 <td>
-                    <a asp-action="Details" asp-controller="Animal" asp-route-id="@item.IdAnimale" class="btn btn-info">Dettagli</a>
-                    <a asp-action="Visite" asp-controller="Animal" asp-route-id="@item.IdAnimale" class="btn btn-secondary">Cronistoria Visite</a>
-                    <a asp-action="AggiungiVisita" asp-controller="Animal" asp-route-idAnimale="@item.IdAnimale" class="btn btn-primary">Aggiungi Visitra</a>
+                    <a asp-action="Details" asp-controller="Animal" asp-route-id="@item.IdAnimale" class="btn btn-vet btn-vet-modifica">Dettagli</a>
+                    <a asp-action="Visite" asp-controller="Animal" asp-route-id="@item.IdAnimale" class="btn btn-vet btn-vet-dettagli">Cronistoria Visite</a>
+                    <a asp-action="AggiungiVisita" asp-controller="Animal" asp-route-idAnimale="@item.IdAnimale" class="btn btn-vet btn-vet-elimina">Aggiungi Visitra</a>
                 </td>
 
             </tr>
@@ -88,7 +88,7 @@
 </table>
 
 <div>
-    <a asp-action="Index">Torna alla lista</a>
+    <a asp-action="Index" class="btn btn-vet btn-vet-elimina">Torna alla lista</a>
 </div>
 
 
