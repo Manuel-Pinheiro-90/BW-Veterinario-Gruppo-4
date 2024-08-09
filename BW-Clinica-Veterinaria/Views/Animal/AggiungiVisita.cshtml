@@ -6,31 +6,36 @@
 
 <h2>Aggiungi Visita</h2>
 
-<form asp-action="AggiungiVisita" method="post">
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        <label asp-for="Data" class="control-label"></label>
-        <input asp-for="Data" class="form-control" type="datetime-local" />
-        <span asp-validation-for="Data" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Esame" class="control-label"></label>
-        <input asp-for="Esame" class="form-control" />
-        <span asp-validation-for="Esame" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="CuraPrescritta" class="control-label"></label>
-        <input asp-for="CuraPrescritta" class="form-control" />
-        <span asp-validation-for="CuraPrescritta" class="text-danger"></span>
-    </div>
-    <input type="hidden" asp-for="IdAnimale" />
-    <div class="form-group">
-        <input type="submit" value="Aggiungi" class="btn btn-primary" />
-    </div>
-</form>
+<div class="row">
+    <div class="col-md-4">
+        <form class="form-FPA" asp-action="AggiungiVisita">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p class="title-FPA">Aggiungi Proprietario</p>
+            <label class="label-FPA">
+                <span>Data</span>
+                <input asp-for="Data" class="input-FPA" type="datetime-local" placeholder="" required="">
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </label>
 
-<div>
-    <a asp-action="Details" asp-route-id="@Model.IdAnimale">Torna alla Lista Visite</a>
+            <label class="label-FPA">
+                <span>Esame</span>
+                <input asp-for="Esame" class="input-FPA" type="text" placeholder="" required="">
+                <span asp-validation-for="Esame" class="text-danger"></span>
+            </label>
+
+            <label class="label-FPA">
+                <span>CuraPrescritta</span>
+                <input asp-for="CuraPrescritta" class="input-FPA" type="text" placeholder="" required="">
+                <span asp-validation-for="CuraPrescritta" class="text-danger"></span>
+            </label>
+
+            <input type="hidden" asp-for="IdAnimale" />
+
+            <input type="submit" value="Crea" class="btn btn-primary submit-FPA fw-bold" />
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary fw-bold border-button">Torna alla home</a>
+        </form>
+    </div>
 </div>
 
 @section Scripts {
