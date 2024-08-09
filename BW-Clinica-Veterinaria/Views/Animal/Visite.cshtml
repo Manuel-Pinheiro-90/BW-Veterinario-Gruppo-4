@@ -47,6 +47,7 @@
 </div>
 
 <div class="mt-4">
-    <a asp-controller="Proprietari" asp-action="Index" class="btn btn-secondary">Torna alla Lista Proprietari</a>
-    <a asp-action="AggiungiVisita" asp-route-idAnimale="@animale.IdAnimale" class="btn btn-primary">Aggiungi Visita</a>
+    
+    <a asp-action="AggiungiVisita" asp-route-idAnimale="@animale.IdAnimale" class="btn btn-vet btn-vet-dettagli">Aggiungi Visita</a>
+    <a asp-controller="Proprietari" asp-action="Index" class="btn btn-vet btn-vet-elimina">Torna alla Lista Proprietari</a>
 </div>
