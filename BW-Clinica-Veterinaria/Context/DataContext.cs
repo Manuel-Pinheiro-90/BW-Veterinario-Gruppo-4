@@ -8,7 +8,7 @@ namespace BW_Clinica_Veterinaria.Context
     {
         public virtual DbSet<Animale> Animali { get; set; }
         public virtual DbSet<Cassetto> Cassetti { get; set; }
-        public virtual DbSet<Ditta>Ditte { get; set; }
+        public virtual DbSet<Ditta> Ditte { get; set; }
         public virtual DbSet<Prodotto> Prodotti { get; set; }
         public virtual DbSet<Proprietario> Proprietari { get; set; }
         public virtual DbSet<Ricovero> Ricoveri { get; set; }
@@ -106,10 +106,68 @@ namespace BW_Clinica_Veterinaria.Context
             );
 
 
-            
+            //Popolazione prodotti
+            /* Lista Prodotti da eliminare/correggere, non popola la tabella associativa UtilizziProdotti
+            modelBuilder.Entity<Prodotto>().HasData(
+            new Prodotto { IdProdotto = 1, Nome = "Next Dry Food Adult Dog", IdDitta = 1, Tipo = "Alimentare", IdCassetto = 3 },
+            new Prodotto { IdProdotto = 2, Nome = "Next Wet Food Kitten", IdDitta = 1, Tipo = "Alimentare", IdCassetto = 5 },
+            new Prodotto { IdProdotto = 3, Nome = "Next Treats Dental", IdDitta = 1, Tipo = "Alimentare", IdCassetto = 8 },
+            new Prodotto { IdProdotto = 4, Nome = "Next Senior Cat Food", IdDitta = 1, Tipo = "Alimentare", IdCassetto = 12 },
+            new Prodotto { IdProdotto = 5, Nome = "Next Puppy Food", IdDitta = 1, Tipo = "Alimentare", IdCassetto = 10 },
+            new Prodotto { IdProdotto = 6, Nome = "Premiere Adult Dog Food", IdDitta = 2, Tipo = "Alimentare", IdCassetto = 4 },
+            new Prodotto { IdProdotto = 7, Nome = "Premiere Kitten Food", IdDitta = 2, Tipo = "Alimentare", IdCassetto = 1 },
+            new Prodotto { IdProdotto = 8, Nome = "Premiere Pet Shampoo", IdDitta = 2, Tipo = "Farmaceutico", IdCassetto = 7 },
+            new Prodotto { IdProdotto = 9, Nome = "Premiere Senior Dog Food", IdDitta = 2, Tipo = "Alimentare", IdCassetto = 9 },
+            new Prodotto { IdProdotto = 10, Nome = "Premiere Puppy Food", IdDitta = 2, Tipo = "Alimentare", IdCassetto = 14 },
+            new Prodotto { IdProdotto = 11, Nome = "Royal Canin Gastrointestinal Dog", IdDitta = 3, Tipo = "Alimentare", IdCassetto = 2 },
+            new Prodotto { IdProdotto = 12, Nome = "Royal Canin Urinary Cat", IdDitta = 3, Tipo = "Alimentare", IdCassetto = 11 },
+            new Prodotto { IdProdotto = 13, Nome = "Royal Canin Hypoallergenic Dog", IdDitta = 3, Tipo = "Alimentare", IdCassetto = 6 },
+            new Prodotto { IdProdotto = 14, Nome = "Royal Canin Satiety Cat", IdDitta = 3, Tipo = "Alimentare", IdCassetto = 13 },
+            new Prodotto { IdProdotto = 15, Nome = "Royal Canin Renal Dog", IdDitta = 3, Tipo = "Alimentare", IdCassetto = 15 },
+            new Prodotto { IdProdotto = 16, Nome = "Hills Science Diet Adult Dog", IdDitta = 4, Tipo = "Alimentare", IdCassetto = 5 },
+            new Prodotto { IdProdotto = 17, Nome = "Hills Prescription Diet c/d", IdDitta = 4, Tipo = "Alimentare", IdCassetto = 10 },
+            new Prodotto { IdProdotto = 18, Nome = "Hills Ideal Balance Cat", IdDitta = 4, Tipo = "Alimentare", IdCassetto = 3 },
+            new Prodotto { IdProdotto = 19, Nome = "Hills Science Diet Kitten", IdDitta = 4, Tipo = "Alimentare", IdCassetto = 7 },
+            new Prodotto { IdProdotto = 20, Nome = "Hills Prescription Diet i/d", IdDitta = 4, Tipo = "Alimentare", IdCassetto = 11 },
+            new Prodotto { IdProdotto = 21, Nome = "Perfect Fit Adult Cat", IdDitta = 5, Tipo = "Alimentare", IdCassetto = 1 },
+            new Prodotto { IdProdotto = 22, Nome = "Perfect Fit Puppy", IdDitta = 5, Tipo = "Alimentare", IdCassetto = 4 },
+            new Prodotto { IdProdotto = 23, Nome = "Perfect Fit Senior Dog", IdDitta = 5, Tipo = "Alimentare", IdCassetto = 8 },
+            new Prodotto { IdProdotto = 24, Nome = "Perfect Fit In-Home Cat", IdDitta = 5, Tipo = "Alimentare", IdCassetto = 6 },
+            new Prodotto { IdProdotto = 25, Nome = "Perfect Fit Sensitive Digestion", IdDitta = 5, Tipo = "Alimentare", IdCassetto = 12 },
+            new Prodotto { IdProdotto = 26, Nome = "NBF Lanes Renal N", IdDitta = 6, Tipo = "Farmaceutico", IdCassetto = 2 },
+            new Prodotto { IdProdotto = 27, Nome = "NBF Lanes Omega Pet", IdDitta = 6, Tipo = "Farmaceutico", IdCassetto = 9 },
+            new Prodotto { IdProdotto = 28, Nome = "NBF Lanes Artikrill", IdDitta = 6, Tipo = "Farmaceutico", IdCassetto = 14 },
+            new Prodotto { IdProdotto = 29, Nome = "NBF Lanes Condrostress", IdDitta = 6, Tipo = "Farmaceutico", IdCassetto = 3 },
+            new Prodotto { IdProdotto = 30, Nome = "NBF Lanes Epato Plus", IdDitta = 6, Tipo = "Farmaceutico", IdCassetto = 7 },
+            new Prodotto { IdProdotto = 31, Nome = "Candioli Florentero", IdDitta = 7, Tipo = "Farmaceutico", IdCassetto = 1 },
+            new Prodotto { IdProdotto = 32, Nome = "Candioli Artrovet", IdDitta = 7, Tipo = "Farmaceutico", IdCassetto = 8 },
+            new Prodotto { IdProdotto = 33, Nome = "Candioli Stomodine", IdDitta = 7, Tipo = "Farmaceutico", IdCassetto = 13 },
+            new Prodotto { IdProdotto = 34, Nome = "Candioli Epato Liquid", IdDitta = 7, Tipo = "Farmaceutico", IdCassetto = 4 },
+            new Prodotto { IdProdotto = 35, Nome = "Candioli Calcio Dog", IdDitta = 7, Tipo = "Farmaceutico", IdCassetto = 6 },
+            new Prodotto { IdProdotto = 36, Nome = "Vetoquinol Flexadin", IdDitta = 8, Tipo = "Farmaceutico", IdCassetto = 2 },
+            new Prodotto { IdProdotto = 37, Nome = "Vetoquinol Zylkene", IdDitta = 8, Tipo = "Farmaceutico", IdCassetto = 11 },
+            new Prodotto { IdProdotto = 38, Nome = "Vetoquinol Orozyme", IdDitta = 8, Tipo = "Farmaceutico", IdCassetto = 14 },
+            new Prodotto { IdProdotto = 39, Nome = "Vetoquinol Care Senior Dog", IdDitta = 8, Tipo = "Farmaceutico", IdCassetto = 5 },
+            new Prodotto { IdProdotto = 40, Nome = "Vetoquinol Samylin", IdDitta = 8, Tipo = "Farmaceutico", IdCassetto = 10 },
+            new Prodotto { IdProdotto = 41, Nome = "Bayer Advantix", IdDitta = 9, Tipo = "Farmaceutico", IdCassetto = 3 },
+            new Prodotto { IdProdotto = 42, Nome = "Bayer Seresto", IdDitta = 9, Tipo = "Farmaceutico", IdCassetto = 7 },
+            new Prodotto { IdProdotto = 43, Nome = "Bayer Drontal", IdDitta = 9, Tipo = "Farmaceutico", IdCassetto = 12 },
+            new Prodotto { IdProdotto = 44, Nome = "Bayer Advantage", IdDitta = 9, Tipo = "Farmaceutico", IdCassetto = 15 },
+            new Prodotto { IdProdotto = 45, Nome = "Bayer Baytril", IdDitta = 9, Tipo = "Farmaceutico", IdCassetto = 9 },
+            new Prodotto { IdProdotto = 46, Nome = "Purina Pro Plan Adult Dog", IdDitta = 10, Tipo = "Alimentare", IdCassetto = 2 },
+            new Prodotto { IdProdotto = 47, Nome = "Purina ONE Kitten", IdDitta = 10, Tipo = "Alimentare", IdCassetto = 11 },
+            new Prodotto { IdProdotto = 48, Nome = "Purina Dentalife", IdDitta = 10, Tipo = "Alimentare", IdCassetto = 5 },
+            new Prodotto { IdProdotto = 49, Nome = "Purina Pro Plan Veterinary Diets EN", IdDitta = 10, Tipo = "Alimentare", IdCassetto = 7 },
+            new Prodotto { IdProdotto = 50, Nome = "Purina ONE Senior Cat", IdDitta = 10, Tipo = "Alimentare", IdCassetto = 14 },
+            new Prodotto { IdProdotto = 51, Nome = "Frontline Combo", IdDitta = 11, Tipo = "Farmaceutico", IdCassetto = 4 },
+            new Prodotto { IdProdotto = 52, Nome = "Frontline Tri-Act", IdDitta = 11, Tipo = "Farmaceutico", IdCassetto = 8 },
+            new Prodotto { IdProdotto = 53, Nome = "Frontline Spray", IdDitta = 11, Tipo = "Farmaceutico", IdCassetto = 13 },
+            new Prodotto { IdProdotto = 54, Nome = "Frontline Spot On Cat", IdDitta = 11, Tipo = "Farmaceutico", IdCassetto = 10 },
+            new Prodotto { IdProdotto = 55, Nome = "Frontline Spot On Dog", IdDitta = 11, Tipo = "Farmaceutico", IdCassetto = 3 }
+        );*/
 
+
+        }
 
     }
-
-}
 }
