@@ -74,12 +74,20 @@
                 </div>
             </div>
         </nav>
+        <div class="header-content">
+            <img src="~/image/murogatto.png" alt="gatto" class="image-bottom-header">
+        </div>
     </header>
     <div class="container margin-main">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
+    <div class="image-container">
+        <img src="~/image/gattocane.png" alt="Cane" class="image-above-footer">
+    </div>
+
     <footer class="d-flex flex-wrap justify-content-around align-items-center p-3 mt-1 border-top footer text-muted fixed-bottom bottom-0">
         <div class="col-md-4 d-flex align-items-center">
             <img src="~/image/logo2.jpg" alt="Logo" class="logo-img" />
@@ -101,3 +109,23 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+<script>
+    function checkZoom() {
+        var img = document.querySelector('.image-container');
+        var imghead = document.querySelector('.header-content')
+        if (window.devicePixelRatio !== 1) {
+            img.style.display = 'none';
+            imghead.style.display = 'none';
+        } else {
+            img.style.display = 'block';
+            imghead.style.display = 'block';
+        }
+    }
+
+    // Controlla il livello di zoom al caricamento della pagina
+    checkZoom();
+
+    // Aggiungi un listener per rilevare i cambiamenti nel livello di zoom
+    window.addEventListener('resize', checkZoom);
+</script>
