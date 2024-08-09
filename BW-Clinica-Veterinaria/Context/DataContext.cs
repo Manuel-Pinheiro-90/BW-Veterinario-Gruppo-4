@@ -8,7 +8,7 @@ namespace BW_Clinica_Veterinaria.Context
     {
         public virtual DbSet<Animale> Animali { get; set; }
         public virtual DbSet<Cassetto> Cassetti { get; set; }
-        public virtual DbSet<Ditta>Ditte { get; set; }
+        public virtual DbSet<Ditta> Ditte { get; set; }
         public virtual DbSet<Prodotto> Prodotti { get; set; }
         public virtual DbSet<Proprietario> Proprietari { get; set; }
         public virtual DbSet<Ricovero> Ricoveri { get; set; }
@@ -167,7 +167,7 @@ namespace BW_Clinica_Veterinaria.Context
         );*/
 
 
-    }
+        }
 
-}
+    }
 }
