@@ -47,6 +47,47 @@ body {
   margin-right: 10px;
 }
 
+/* Bottone Vet (Blu) */
+
+.btn-vet {
+    min-width: 6.5em !important;
+    height: 2.3em !important;
+    margin: 0.5em !important;
+    background-color: #15172b !important;
+    color: #f7f8fa !important;
+    border: none !important;
+    border-radius: 0.625em !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+}
+
+    .btn-vet:hover {
+        color: #15172b !important;
+    }
+
+    .btn-vet:after {
+        content: "";
+        background-color: #f7f8fa !important;
+        position: absolute !important;
+        z-index: -1 !important;
+        left: -20% !important;
+        right: -20% !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        transform: skewX(-45deg) scale(0, 1) !important;
+        transition: all 0.5s !important;
+    }
+
+    .btn-vet:hover:after {
+        transform: skewX(-45deg) scale(1, 1) !important;
+        -webkit-transition: all 0.5s !important;
+        transition: all 0.5s !important;
+    }
+
 /* Form Prodotti */
 
 .form-FPA {
@@ -70,7 +111,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 30px;
-  color: #00bfff;
+  color: #575eac;
 }
 
 .title-FPA::before {
@@ -92,7 +133,7 @@ body {
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: #00bfff;
+  background-color: #575eac;
 }
 
 .message-FPA,
@@ -110,7 +151,7 @@ body {
 }
 
 .signin-FPA a {
-  color: #00bfff;
+  color: #575eac;
 }
 
 .flex-FPA {
@@ -150,7 +191,7 @@ body {
 
 .form-FPA .label-FPA .input-FPA:focus + span,
 .form-FPA .label-FPA .input-FPA:valid + span {
-  color: #00bfff;
+  color: #575eac;
   top: 0px;
   font-size: 0.7em;
   font-weight: 600;
@@ -168,11 +209,11 @@ body {
   color: #fff;
   font-size: 16px;
   transform: 0.3s ease;
-  background-color: #00bfff;
+  background-color: #575eac;
 }
 
 .submit-FPA:hover {
-  background-color: #00bfff96;
+  background-color: #575eac96;
 }
 
 @keyframes pulse {
