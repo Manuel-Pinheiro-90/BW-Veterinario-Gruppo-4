@@ -5,19 +5,20 @@
     List<BW_Clinica_Veterinaria.Models.Entity.Animale> animali = ViewBag.Animali;
 }
 
-<h1>AggiungiRicovero</h1>
+<h1 class="text-center mt-5 mb-4">Aggiungi il ricovero di un animale registrato</h1>
 
-<p>Aggiungi il ricovero di un animale registrato</p>
+
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form class="form-FPA" asp-action="AggiungiRicovero" enctype="multipart/form-data">
+<div class="d-flex justify-content-center">
+    <div class="col-md-6">
+        <form class="form-FPA mx-auto" asp-action="AggiungiRicovero" enctype="multipart/form-data">
             @Html.AntiForgeryToken()
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <p class="title-FPA">Aggiungi Ricovero</p>
+            <div asp-validation-summary="ModelOnly" class="text-danger text-center"></div>
+            <p class="title-FPA text-center">Aggiungi Ricovero</p>
+
             <label class="label-FPA">
-                <span>DataRicovero</span>
+                <span>Data Ricovero</span>
                 <input asp-for="DataRicovero" class="input-FPA" type="date" placeholder="" required="">
                 <span asp-validation-for="DataRicovero" class="text-danger"></span>
             </label>
@@ -34,16 +35,22 @@
 
             <label class="label-FPA">
                 <span>Foto</span>
-                <input asp-for="Foto" class="input-FPA" type="file" placeholder="" required="">
+                <div class="d-flex justify-content-center align-items-center input-FPA" style="height: 100%;">
+                    <input asp-for="Foto" class="form-control-file" type="file" required="" style="margin: 0 auto;">
+                </div>
                 <span asp-validation-for="Foto" class="text-danger"></span>
             </label>
 
-            <input type="submit" value="Aggiungi Ricovero" class="btn btn-primary submit-FPA fw-bold" />
-            <a asp-action="Index" class="btn btn-secondary fw-bold border-button">Torna alla home</a>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary submit-FPA fw-bold btn-lg rounded-pill mt-2">Aggiungi Ricovero</button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-secondary btn-lg rounded-pill mt-2" style="text-decoration: none;">Torna alla home</a>
+            </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
